@@ -1,0 +1,45 @@
+---
+import classnames from "classnames";
+const currentPath = new URL(Astro.request.url).pathname.slice(1);
+---
+
+<header class="w-full shadow-md">
+	<main class="mx-auto flex w-full max-w-5xl justify-between p-4 shadow-sm">
+		<h1 class="font-sans text-lg md:text-2xl">Stardew Checklist</h1>
+		<nav class="flex items-center gap-6">
+			<a
+				href="/"
+				class={classnames([currentPath === "" ? "active" : "", "nav-link"])}
+				>Home</a
+			>
+			<a
+				href="/bundles"
+				class={classnames([
+					currentPath === "bundles" ? "active" : "",
+					"nav-link",
+				])}>Bundles</a
+			>
+			<a
+				href="/inventory"
+				class={classnames([
+					currentPath === "inventory" ? "active" : "",
+					"nav-link",
+				])}>Inventory</a
+			>
+		</nav>
+	</main>
+</header>
+
+<style>
+	.nav-link {
+		@apply font-medium;
+
+		&.active {
+			@apply text-red-600;
+		}
+
+		&:hover {
+			@apply underline underline-offset-4;
+		}
+	}
+</style>
