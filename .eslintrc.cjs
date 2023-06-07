@@ -1,6 +1,11 @@
 module.exports = {
 	root: true,
-	extends: ["plugin:astro/recommended"],
+	extends: [
+		"plugin:@typescript-eslint/recommended",
+		"plugin:astro/recommended",
+		"prettier",
+	],
+	parser: "@typescript-eslint/parser",
 	parserOptions: {
 		ecmaVersion: "latest",
 	},
