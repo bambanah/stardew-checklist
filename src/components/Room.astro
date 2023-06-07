@@ -1,0 +1,19 @@
+---
+import type { Room } from "@/constants/rooms";
+import Heading from "./Heading.astro";
+import { getBundlesInRoom } from "@/store/item-store";
+import Bundle from "./Bundle.astro";
+
+export interface Props {
+	room: Room;
+}
+
+const { room } = Astro.props;
+
+const roomBundles = getBundlesInRoom(room);
+---
+
+<div class="">
+	<Heading size="md">{room.name}</Heading>
+	{roomBundles.map((bundle) => <Bundle bundle={bundle} />)}
+</div>

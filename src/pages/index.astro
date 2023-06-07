@@ -1,8 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Heading from "../components/heading.astro";
+import Room from "@/components/Room.astro";
+import { ROOMS } from "@/constants/rooms";
+import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="Stardew Checklist">
-	<Heading>Welcome to Astro</Heading>
+	<div class="flex flex-col gap-2">
+		{Object.values(ROOMS).map((room) => <Room room={room} />)}
+	</div>
 </Layout>

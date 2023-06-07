@@ -5,4 +5,3 @@ export const SKILLS = [
 	"fishing",
 	"combat",
 ] as const;
-export type Skill = (typeof SKILLS)[number];

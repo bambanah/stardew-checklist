@@ -1,22 +1,4 @@
-import type { Item, Quality } from "./items";
-
-type BundleItem =
-	| Item
-	| {
-			item: Item;
-			quantity?: number;
-			quality?: Quality;
-	  };
-type Bundles = {
-	[key: string]: {
-		name: string;
-		reward: string | readonly [string, string];
-		items_required: number;
-	} & (
-		| { items: readonly BundleItem[]; items_remixed?: readonly BundleItem[] }
-		| { items_remixed: readonly BundleItem[] }
-	);
-};
+import type { Bundle } from "@/types";
 
 // If bundle has a different reward when remixed:
 // reward: ["Normal", "Remixed"]
@@ -73,6 +55,7 @@ export const BUNDLES = {
 	sticky: {
 		name: "Sticky Bundle",
 		reward: "Charcoal Kiln",
+		items: [],
 		items_remixed: [{ item: "sap", quantity: 500 }],
 		items_required: 1,
 	},
@@ -95,6 +78,7 @@ export const BUNDLES = {
 	wild_medicine: {
 		name: "Wild Medicine Bundle",
 		reward: "Cookout Kit (2)",
+		items: [],
 		items_remixed: [
 			{ item: "purple_mushroom", quantity: 5 },
 			{ item: "fiddlehead_fern", quantity: 5 },
@@ -148,6 +132,7 @@ export const BUNDLES = {
 	rare_crops: {
 		name: "Rare Crops Bundle",
 		reward: "Preserves Jar",
+		items: [],
 		items_remixed: ["ancient_fruit", "sweet_gem_berry"],
 		items_required: 1,
 	},
@@ -167,6 +152,7 @@ export const BUNDLES = {
 	fish_farmers: {
 		name: "Fish Farmer's Bundle",
 		reward: "Worm Bin",
+		items: [],
 		items_remixed: [
 			{ item: "roe", quantity: 15 },
 			{ item: "aged_roe", quantity: 15 },
@@ -177,6 +163,7 @@ export const BUNDLES = {
 	garden: {
 		name: "Garden Bundle",
 		reward: "Quality Sprinkler",
+		items: [],
 		items_remixed: [
 			"tulip",
 			"blue_jazz",
@@ -208,6 +195,7 @@ export const BUNDLES = {
 	brewers: {
 		name: "Brewer's Bundle",
 		reward: "Keg",
+		items: [],
 		items_remixed: ["mead", "pale_ale", "wine", "juice", "green_tea"],
 		items_required: 4,
 	},
@@ -261,6 +249,7 @@ export const BUNDLES = {
 	quality_fish: {
 		name: "Quality Fish Bundle",
 		reward: "Dish O' The Sea",
+		items: [],
 		items_remixed: [
 			{ item: "largemouth_bass", quality: "gold" },
 			{ item: "shad", quality: "gold" },
@@ -272,6 +261,7 @@ export const BUNDLES = {
 	master_fishers: {
 		name: "Master Fisher's Bundle",
 		reward: "Dish O' The Sea",
+		items: [],
 		items_remixed: ["lava_eel", "scorpion_carp", "octopus", "blobfish"],
 		items_required: 2,
 	},
@@ -308,6 +298,7 @@ export const BUNDLES = {
 	treasure_hunters: {
 		name: "Treasure Hunter's Bundle",
 		reward: "Lucky Lunch",
+		items: [],
 		items_remixed: [
 			"amethyst",
 			"aquamarine",
@@ -321,6 +312,7 @@ export const BUNDLES = {
 	engineers: {
 		name: "Engineer's Bundle",
 		reward: "Furnace",
+		items: [],
 		items_remixed: [
 			"iridium_ore",
 			"battery_pack",
@@ -393,6 +385,7 @@ export const BUNDLES = {
 	childrens: {
 		name: "Children's Bundle",
 		reward: "Battery Pack (3)",
+		items: [],
 		items_remixed: [
 			{ item: "salmonberry", quantity: 10 },
 			"cookie",
@@ -404,6 +397,7 @@ export const BUNDLES = {
 	foragers: {
 		name: "Forager's Bundle",
 		reward: "Tapper (3)",
+		items: [],
 		items_remixed: [
 			{ item: "salmonberry", quantity: 50 },
 			{ item: "blackberry", quantity: 50 },
@@ -414,6 +408,7 @@ export const BUNDLES = {
 	home_cooks: {
 		name: "Home Cook's Bundle",
 		reward: "Complete Breakfast (5)",
+		items: [],
 		items_remixed: [
 			{ item: "egg", quantity: 10 },
 			{ item: "milk", quantity: 10 },
@@ -458,4 +453,6 @@ export const BUNDLES = {
 		],
 		items_required: 5,
 	},
-} as const satisfies Bundles;
+} as const satisfies {
+	[key: string]: Bundle;
+};

@@ -1,14 +1,5 @@
-import type { Season } from "./seasons";
-import type { Skill } from "./skills";
+import type { Item } from "@/types";
 
-type Items = {
-	[key: string]: {
-		name: string;
-		seasons: readonly Season[];
-		skills: readonly Skill[];
-		source: string;
-	};
-};
 export const ITEMS = {
 	wild_horseradish: {
 		name: "Wild Horseradish",
@@ -1026,7 +1017,4 @@ export const ITEMS = {
 		skills: ["farming", "mining", "foraging", "fishing", "combat"],
 		source: "Collect 25,000 Gold and turn in.",
 	},
-} as const satisfies Items;
-
-export type Item = keyof typeof ITEMS;
-export type Quality = "regular" | "silver" | "gold" | "iridium";
+} as const satisfies { [key: string]: Item };

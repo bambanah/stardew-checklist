@@ -1,0 +1,20 @@
+---
+import type { Bundle } from "@/constants/bundles";
+import { getItemsInBundle } from "@/store/item-store";
+import Heading from "./Heading.astro";
+
+export interface Props {
+	bundle: Bundle;
+}
+
+const { bundle } = Astro.props;
+
+const items = getItemsInBundle(bundle);
+---
+
+<div>
+	<Heading size="sm">{bundle.name}</Heading>
+	<ul>
+		{items.map((item) => <li>{item.name}</li>)}
+	</ul>
+</div>

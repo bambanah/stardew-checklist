@@ -20,6 +20,13 @@ const currentPath = new URL(Astro.request.url).pathname.slice(1);
 				])}>Bundles</a
 			>
 			<a
+				href="/rooms"
+				class={classnames([
+					currentPath === "rooms" ? "active" : "",
+					"nav-link",
+				])}>Rooms</a
+			>
+			<a
 				href="/inventory"
 				class={classnames([
 					currentPath === "inventory" ? "active" : "",
