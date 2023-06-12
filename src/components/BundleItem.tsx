@@ -1,9 +1,4 @@
-import {
-	storedItems,
-	storedItemsList,
-	storeItem,
-	unstoreItem,
-} from "@/store/item-store";
+import { storedItemsList, storeItem, unstoreItem } from "@/store/item-store";
 import type { BundleName, Item, ItemName } from "@/types";
 import { useStore } from "@nanostores/solid";
 import { computed } from "nanostores";
@@ -13,7 +8,7 @@ interface Props {
 	item: Item & { id: ItemName };
 }
 
-export default function BundleItem({ item, bundleName }: Props) {
+const BundleItem = ({ item, bundleName }: Props) => {
 	const $storedItemsList = useStore(storedItemsList);
 
 	const bundleItemStr = `${bundleName}:${item.id}`;
@@ -41,4 +36,6 @@ export default function BundleItem({ item, bundleName }: Props) {
 			</button>
 		</div>
 	);
-}
+};
+
+export default BundleItem;

@@ -16,15 +16,6 @@ export const storedItems = persistentAtom<StoredItem[]>("storedItems", [], {
 export const storedItemsList = computed(storedItems, (current) =>
 	current.map((storedItem) => `${storedItem.bundle}:${storedItem.item}`)
 );
-export const isStored = action(
-	storedItems,
-	"isStored",
-	(storedItems, bundleName: BundleName, itemName: ItemName) => {
-		return storedItems
-			.get()
-			.some((item) => item.bundle === bundleName && item.item === itemName);
-	}
-);
 
 export function getStoredItemIfExists(
 	bundleName: BundleName,
@@ -44,7 +35,6 @@ export const storeItem = action(
 	storedItems,
 	"storeItem",
 	(storedItems, bundleName: BundleName, itemName: ItemName) => {
-		console.log(bundleName, itemName);
 		let required = 0;
 		for (const item of BUNDLES[bundleName].items) {
 			const name = typeof item === "string" ? item : item.item;
