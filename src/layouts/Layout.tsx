@@ -10,7 +10,7 @@ const Layout = (props: Props) => {
 	return (
 		<>
 			<Navbar />
-			<main class="mx-auto w-full max-w-6xl px-4 py-4">{props.children}</main>
+			<main class="mx-auto w-full max-w-8xl px-4 py-4">{props.children}</main>
 		</>
 	);
 };

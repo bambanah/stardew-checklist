@@ -3,6 +3,7 @@ type Size = "sm" | "md" | "lg" | "xl";
 interface Props {
 	size?: Size;
 	children: string;
+	class?: string;
 }
 
 const Heading = (props: Props) => {
@@ -15,7 +16,11 @@ const Heading = (props: Props) => {
 	const baseStyle = "font-sans font-semibold";
 
 	return (
-		<h1 class={`${baseStyle} ${sizeStyles[props.size ?? "md"]}`}>
+		<h1
+			class={`${baseStyle} ${sizeStyles[props.size ?? "md"]} ${
+				props.class ?? ""
+			}`}
+		>
 			{props.children}
 		</h1>
 	);

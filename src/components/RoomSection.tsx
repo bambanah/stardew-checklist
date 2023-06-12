@@ -13,7 +13,7 @@ export default function RoomSection(props: Props) {
 	return (
 		<div>
 			<Heading size="md">{props.room.name}</Heading>
-			<div class="flex gap-4 flex-wrap justify-evenly">
+			<div class="flex gap-2 flex-wrap justify-evenly py-4">
 				{roomBundles.map((bundle) => (
 					<Bundle bundle={bundle} />
 				))}

@@ -11,8 +11,10 @@ export default function Bundle(props: Props) {
 	const items = getItemsInBundle(props.bundle);
 
 	return (
-		<div class="flex-1 shadow-md min-w-[15rem] p-2 border">
-			<Heading size="sm">{props.bundle.name}</Heading>
+		<div class="flex gap-2 flex-col flex-0 shadow-md w-full md:w-[15rem] p-2 border">
+			<Heading size="sm" class="basis-12">
+				{props.bundle.name}
+			</Heading>
 
 			<div class="flex flex-col gap-2">
 				{items.map((item) => (
