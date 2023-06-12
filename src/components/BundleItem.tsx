@@ -1,7 +1,12 @@
-import { storedItemsList, storeItem, unstoreItem } from "@/store/item-store";
+import {
+	storedItems,
+	storedItemsList,
+	storeItem,
+	unstoreItem,
+} from "@/store/item-store";
 import type { BundleName, Item, ItemName } from "@/types";
-import { useStore } from "@nanostores/preact";
-import FaSquare from "~icons/fa/square";
+import { useStore } from "@nanostores/solid";
+import { computed } from "nanostores";
 
 interface Props {
 	bundleName: BundleName;
@@ -11,29 +16,29 @@ interface Props {
 export default function BundleItem({ item, bundleName }: Props) {
 	const $storedItemsList = useStore(storedItemsList);
 
-	const isItemStored = $storedItemsList.includes(`${bundleName}:${item.id}`);
+	const bundleItemStr = `${bundleName}:${item.id}`;
+
+	const isStored = useStore(
+		computed(storedItemsList, (storedItemsList) =>
+			storedItemsList.some((storedItem) => storedItem === bundleItemStr)
+		)
+	);
 
 	return (
 		<div class="flex items-center gap-2">
-			<span class="">{isItemStored ? <span>Hello</span> : <FaSquare />}</span>
+			<span class="">{isStored() ? "X" : "O"}</span>
 			<span>{item.name}</span>
 
-			{isItemStored ? (
-				<button
-					onClick={() => unstoreItem(bundleName, item.id)}
-					class="border p-1 px-4"
-				>
-					Unstore
-				</button>
-			) : (
-				<button
-					onClick={() => storeItem(bundleName, item.id)}
-					class="border p-1 px-4"
-				>
-					Store
-				</button>
-			)}
-			{isItemStored ? <div>stored</div> : <div>Not stored</div>}
+			<button
+				onClick={() =>
+					$storedItemsList().includes(bundleItemStr)
+						? unstoreItem(bundleName, item.id)
+						: storeItem(bundleName, item.id)
+				}
+				class="border p-1 px-4"
+			>
+				{$storedItemsList().includes(bundleItemStr) ? "Unstore" : "Store"}
+			</button>
 		</div>
 	);
 }

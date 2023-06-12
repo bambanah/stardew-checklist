@@ -44,6 +44,7 @@ export const storeItem = action(
 	storedItems,
 	"storeItem",
 	(storedItems, bundleName: BundleName, itemName: ItemName) => {
+		console.log(bundleName, itemName);
 		let required = 0;
 		for (const item of BUNDLES[bundleName].items) {
 			const name = typeof item === "string" ? item : item.item;
