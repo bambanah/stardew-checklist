@@ -12,6 +12,7 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 import { Route, Router, Routes } from "@solidjs/router";
 import { lazy } from "solid-js";
 
+import "@fontsource/inter";
 import "./index.css";
 
 const Home = lazy(() => import("@/pages/Home"));

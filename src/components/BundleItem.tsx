@@ -1,6 +1,7 @@
 import { storedItemsList, storeItem, unstoreItem } from "@/store/item-store";
 import type { BundleName, Item, ItemName } from "@/types";
 import { useStore } from "@nanostores/solid";
+import classNames from "classnames";
 import { computed } from "nanostores";
 
 interface Props {
@@ -20,21 +21,20 @@ const BundleItem = ({ item, bundleName }: Props) => {
 	);
 
 	return (
-		<div class="flex items-center gap-2">
+		<button
+			onClick={() =>
+				$storedItemsList().includes(bundleItemStr)
+					? unstoreItem(bundleName, item.id)
+					: storeItem(bundleName, item.id)
+			}
+			class={classNames([
+				"flex items-center justify-start gap-2 p-2 w-full rounded border",
+				$storedItemsList().includes(bundleItemStr) && "bg-green-200",
+			])}
+		>
 			<span class="">{isStored() ? "X" : "O"}</span>
-			<span>{item.name}</span>
-
-			<button
-				onClick={() =>
-					$storedItemsList().includes(bundleItemStr)
-						? unstoreItem(bundleName, item.id)
-						: storeItem(bundleName, item.id)
-				}
-				class="border p-1 px-4"
-			>
-				{$storedItemsList().includes(bundleItemStr) ? "Unstore" : "Store"}
-			</button>
-		</div>
+			{item.name}
+		</button>
 	);
 };
 

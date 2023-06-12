@@ -13,9 +13,11 @@ export default function RoomSection(props: Props) {
 	return (
 		<div>
 			<Heading size="md">{props.room.name}</Heading>
-			{roomBundles.map((bundle) => (
-				<Bundle bundle={bundle} />
-			))}
+			<div class="flex gap-4 flex-wrap justify-evenly">
+				{roomBundles.map((bundle) => (
+					<Bundle bundle={bundle} />
+				))}
+			</div>
 		</div>
 	);
 }

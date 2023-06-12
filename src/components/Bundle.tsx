@@ -11,11 +11,14 @@ export default function Bundle(props: Props) {
 	const items = getItemsInBundle(props.bundle);
 
 	return (
-		<div>
+		<div class="flex-1 shadow-md min-w-[15rem] p-2 border">
 			<Heading size="sm">{props.bundle.name}</Heading>
-			{items.map((item) => (
-				<BundleItem item={item} bundleName={props.bundle.id} />
-			))}
+
+			<div class="flex flex-col gap-2">
+				{items.map((item) => (
+					<BundleItem item={item} bundleName={props.bundle.id} />
+				))}
+			</div>
 		</div>
 	);
 }

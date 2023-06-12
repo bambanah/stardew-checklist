@@ -1,7 +1,6 @@
 {
 	"eslint.validate": [
 		"javascript",
-		"astro",
 		"typescript",
 		"javascriptreact",
 		"typescriptreact"
