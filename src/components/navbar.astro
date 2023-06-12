@@ -10,29 +10,9 @@ const currentPath = new URL(Astro.request.url).pathname.slice(1);
 			<a
 				href="/"
 				class={classnames([currentPath === "" ? "active" : "", "nav-link"])}
-				>Home</a
 			>
-			<a
-				href="/bundles"
-				class={classnames([
-					currentPath === "bundles" ? "active" : "",
-					"nav-link",
-				])}>Bundles</a
-			>
-			<a
-				href="/rooms"
-				class={classnames([
-					currentPath === "rooms" ? "active" : "",
-					"nav-link",
-				])}>Rooms</a
-			>
-			<a
-				href="/inventory"
-				class={classnames([
-					currentPath === "inventory" ? "active" : "",
-					"nav-link",
-				])}>Inventory</a
-			>
+				Home
+			</a>
 		</nav>
 	</main>
 </header>

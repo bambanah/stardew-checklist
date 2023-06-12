@@ -1,15 +1,13 @@
 ---
-import type { Room } from "@/constants/rooms";
-import Heading from "./Heading.astro";
+import Heading from "./atoms/Heading.astro";
 import { getBundlesInRoom } from "@/store/item-store";
 import Bundle from "./Bundle.astro";
+import type { Room } from "@/types";
 
 export interface Props {
 	room: Room;
 }
-
 const { room } = Astro.props;
-
 const roomBundles = getBundlesInRoom(room);
 ---
 

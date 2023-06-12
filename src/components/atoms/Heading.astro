@@ -16,4 +16,6 @@ const baseStyle = "font-sans font-semibold";
 const { size } = Astro.props;
 ---
 
-<h1 class={`${baseStyle} ${sizeStyles[size ?? "md"]}`}><slot /></h1>
+<h1 class={`${baseStyle} ${sizeStyles[size ?? "md"]}`}>
+	<slot />
+</h1>
