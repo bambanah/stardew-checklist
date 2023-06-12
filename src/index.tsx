@@ -1,10 +1,6 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
 
-import "./index.css";
-import { Route, Router, Routes } from "@solidjs/router";
-import Home from "./pages/Home";
-
 const root = document.getElementById("root");
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
@@ -12,6 +8,13 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 		"Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got mispelled?"
 	);
 }
+
+import { Route, Router, Routes } from "@solidjs/router";
+import { lazy } from "solid-js";
+
+import "./index.css";
+
+const Home = lazy(() => import("@/pages/Home"));
 
 render(
 	() => (

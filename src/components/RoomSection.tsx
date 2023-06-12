@@ -11,7 +11,7 @@ export default function RoomSection(props: Props) {
 	const roomBundles = getBundlesInRoom(props.room);
 
 	return (
-		<div class="">
+		<div>
 			<Heading size="md">{props.room.name}</Heading>
 			{roomBundles.map((bundle) => (
 				<Bundle bundle={bundle} />
