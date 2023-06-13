@@ -1,3 +1,4 @@
+import { For } from "solid-js";
 import Heading from "@/components/atoms/Heading";
 import { storedItems } from "@/store/item-store";
 import type { Bundle, BundleName } from "@/types";
@@ -13,13 +14,12 @@ export default function Bundle(props: Props) {
 	const $storedItems = useStore(storedItems);
 
 	const itemsStoredInBundle = () =>
-		$storedItems().filter(
-			(storedItem) =>
-				storedItem.bundle === props.bundle.id &&
-				props.bundle.items.includes(storedItem.item)
+		Object.values($storedItems()[props.bundle.id]?.items ?? {}).reduce(
+			(prev, curr) => curr + prev,
+			0
 		);
 	const isBundleComplete = () =>
-		itemsStoredInBundle().length >= props.bundle.items_required;
+		itemsStoredInBundle() >= props.bundle.items_required;
 
 	return (
 		<div class="flex gap-2 flex-col flex-0 shadow-md w-full md:w-[20rem] p-2 border">
@@ -31,13 +31,13 @@ export default function Bundle(props: Props) {
 			</p>
 			<progress
 				max={props.bundle.items_required}
-				value={itemsStoredInBundle().length}
+				value={itemsStoredInBundle()}
 			/>
 
 			<div class="flex flex-col gap-2">
-				{props.bundle.items.map((item) => (
-					<BundleItem item={item} bundleName={props.bundle.id} />
-				))}
+				<For each={props.bundle.items}>
+					{(item) => <BundleItem item={item} bundleName={props.bundle.id} />}
+				</For>
 			</div>
 		</div>
 	);
