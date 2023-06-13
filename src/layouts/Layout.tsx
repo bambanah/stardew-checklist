@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Heading from "@/components/atoms/Heading";
 import { JSXElement } from "solid-js";
 
 interface Props {
@@ -9,7 +9,9 @@ interface Props {
 const Layout = (props: Props) => {
 	return (
 		<>
-			<Navbar />
+			<div class="mx-auto py-8 text-center">
+				<Heading size="lg">Stardew Community Bundle Checklist</Heading>
+			</div>
 			<main class="mx-auto w-full max-w-8xl px-4 py-4">{props.children}</main>
 		</>
 	);

@@ -6,9 +6,11 @@ import Layout from "@/layouts/Layout";
 export default function Home() {
 	return (
 		<Layout>
-			<For each={Object.values(ROOMS)}>
-				{(room) => <RoomSection room={room} />}
-			</For>
+			<div class="divide-y">
+				<For each={Object.values(ROOMS)}>
+					{(room) => <RoomSection room={room} />}
+				</For>
+			</div>
 		</Layout>
 	);
 }
