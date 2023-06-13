@@ -36,7 +36,13 @@ export default function Bundle(props: Props) {
 
 			<div class="flex flex-col gap-2">
 				<For each={props.bundle.items}>
-					{(item) => <BundleItem item={item} bundleName={props.bundle.id} />}
+					{(item) => (
+						<BundleItem
+							item={item}
+							bundleName={props.bundle.id}
+							isBundleComplete={isBundleComplete}
+						/>
+					)}
 				</For>
 			</div>
 		</div>

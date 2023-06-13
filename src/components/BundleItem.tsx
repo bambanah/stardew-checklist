@@ -5,8 +5,8 @@ import { useStore } from "@nanostores/solid";
 import classNames from "classnames";
 import {
 	FaRegularCircle,
-	FaRegularCircleCheck,
 	FaRegularCircleQuestion,
+	FaSolidCircleCheck,
 } from "solid-icons/fa";
 import SourceTooltip from "./atoms/SourceTooltip";
 import SeasonDisplay from "./SeasonDisplay";
@@ -14,6 +14,7 @@ import SeasonDisplay from "./SeasonDisplay";
 interface Props {
 	bundleName: BundleName;
 	item: BundleItem;
+	isBundleComplete: () => boolean;
 }
 
 export default function BundleItem(props: Props) {
@@ -44,10 +45,16 @@ export default function BundleItem(props: Props) {
 				class={classNames([
 					"flex relative items-center justify-between gap-2 border-2 p-2 w-full rounded transition-colors",
 					isStored() ? "border-green-700" : "",
+					(props.isBundleComplete() || isStored()) &&
+						"text-gray-500 fill-gray-500",
 				])}
 			>
 				<div class="flex items-center flex-grow gap-2">
-					{isStored() ? <FaRegularCircleCheck /> : <FaRegularCircle />}
+					{isStored() ? (
+						<FaSolidCircleCheck class="fill-green-700" />
+					) : (
+						<FaRegularCircle />
+					)}
 					<span class="font-medium">
 						{itemDetails().name} {quantity() > 1 && `(${quantity()})`}
 					</span>
