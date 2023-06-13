@@ -9,7 +9,7 @@ interface Props {
 const Heading = (props: Props) => {
 	const sizeStyles: Record<Size, string> = {
 		sm: "text-xl",
-		md: "text-2xl",
+		md: "text-3xl",
 		lg: "text-4xl",
 		xl: "text-6xl",
 	};
