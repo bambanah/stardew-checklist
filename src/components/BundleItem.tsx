@@ -46,24 +46,25 @@ export default function BundleItem(props: Props) {
 					isStored() ? "border-green-700" : "",
 				])}
 			>
-				<div class="flex items-center gap-2">
+				<div class="flex items-center flex-grow gap-2">
 					{isStored() ? <FaRegularCircleCheck /> : <FaRegularCircle />}
 					<span class="font-medium">
 						{itemDetails().name} {quantity() > 1 && `(${quantity()})`}
 					</span>
 				</div>
 
-				<span class="flex items-center gap-2">
-					{itemDetails().seasons.length < 4 && (
-						<SeasonDisplay seasons={itemDetails().seasons} />
-					)}
-					<FaRegularCircleQuestion
-						onMouseEnter={() => showTooltip(true)}
-						onMouseLeave={() => showTooltip(false)}
-					/>
-				</span>
-
-				<SourceTooltip ref={tooltipRef} source={itemDetails().source} />
+				{itemDetails().seasons.length < 4 && (
+					<SeasonDisplay seasons={itemDetails().seasons} />
+				)}
+				{itemDetails().source && (
+					<>
+						<FaRegularCircleQuestion
+							onMouseEnter={() => showTooltip(true)}
+							onMouseLeave={() => showTooltip(false)}
+						/>
+						<SourceTooltip ref={tooltipRef} source={itemDetails().source} />
+					</>
+				)}
 			</button>
 		</>
 	);
