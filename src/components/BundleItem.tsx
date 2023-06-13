@@ -1,41 +1,43 @@
-import { storedItemsList, storeItem, unstoreItem } from "@/store/item-store";
-import type { BundleName, Item, ItemName } from "@/types";
+import { ITEMS } from "@/constants/items";
+import { storedItems, storeItem, unstoreItem } from "@/store/item-store";
+import type { BundleName, BundleItem } from "@/types";
 import { useStore } from "@nanostores/solid";
 import classNames from "classnames";
-import { computed } from "nanostores";
+import { FaRegularCircle, FaRegularCircleCheck } from "solid-icons/fa";
 
 interface Props {
 	bundleName: BundleName;
-	item: Item & { id: ItemName };
+	item: BundleItem;
 }
 
-const BundleItem = ({ item, bundleName }: Props) => {
-	const $storedItemsList = useStore(storedItemsList);
+export default function BundleItem({ item, bundleName }: Props) {
+	const $storedItems = useStore(storedItems);
 
-	const bundleItemStr = `${bundleName}:${item.id}`;
+	const itemId = typeof item === "string" ? item : item.item;
+	const quantity = typeof item === "string" ? 1 : item.quantity ?? 1;
+	const itemDetails = ITEMS[itemId];
 
-	const isStored = useStore(
-		computed(storedItemsList, (storedItemsList) =>
-			storedItemsList.some((storedItem) => storedItem === bundleItemStr)
-		)
-	);
+	const isStored = () =>
+		$storedItems().filter(
+			(item) => item.bundle === bundleName && item.item === itemId
+		).length > 0;
 
 	return (
 		<button
 			onClick={() =>
-				$storedItemsList().includes(bundleItemStr)
-					? unstoreItem(bundleName, item.id)
-					: storeItem(bundleName, item.id)
+				isStored()
+					? unstoreItem(bundleName, itemId)
+					: storeItem(bundleName, itemId)
 			}
 			class={classNames([
-				"flex items-center justify-start gap-2 p-2 w-full rounded border",
-				$storedItemsList().includes(bundleItemStr) && "bg-green-200",
+				"flex items-center justify-start gap-2 p-2 w-full rounded border transition-colors",
+				isStored() ? "bg-green-200 hover:bg-green-300" : "hover:bg-neutral-100",
 			])}
 		>
-			<span class="">{isStored() ? "X" : "O"}</span>
-			{item.name}
+			{isStored() ? <FaRegularCircleCheck /> : <FaRegularCircle />}
+			<span class="font-medium">
+				{itemDetails.name} {quantity > 1 && `(${quantity})`}
+			</span>
 		</button>
 	);
-};
-
-export default BundleItem;
+}

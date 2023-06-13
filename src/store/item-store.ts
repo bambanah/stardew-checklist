@@ -3,6 +3,7 @@ import { ITEMS } from "@/constants/items";
 import type { Bundle, BundleName, ItemName, Room } from "@/types";
 import { persistentAtom } from "@nanostores/persistent";
 import { action, computed } from "nanostores";
+import { Accessor } from "solid-js";
 
 export type StoredItem = {
 	bundle: BundleName;
@@ -31,46 +32,48 @@ export function getStoredItemIfExists(
 	return storedItem;
 }
 
+export const isItemStored = (
+	storedItems: Accessor<StoredItem[]>,
+	bundleName: BundleName,
+	itemName: ItemName
+) => {
+	return storedItems().some(
+		(item) => item.bundle === bundleName && item.item === itemName
+	);
+};
+
 export const storeItem = action(
 	storedItems,
 	"storeItem",
 	(storedItems, bundleName: BundleName, itemName: ItemName) => {
-		let required = 0;
-		for (const item of BUNDLES[bundleName].items) {
-			const name = typeof item === "string" ? item : item.item;
-			if (name === itemName) required++;
-		}
+		// let required = 0;
+		// for (const item of BUNDLES[bundleName].items) {
+		// 	const name = typeof item === "string" ? item : item.item;
+		// 	if (name === itemName) required++;
+		// }
 
-		const storedItem = getStoredItemIfExists(bundleName, itemName);
-
-		if (storedItem && storedItem.quantity < required) {
-			// TODO: Check this
-			storedItem.quantity++;
-		} else {
-			storedItems.set([
-				...storedItems.get(),
-				{ bundle: bundleName, item: itemName, quantity: 1 },
-			]);
-		}
-
-		return storedItems.get();
+		storedItems.set([
+			...storedItems.get(),
+			{ bundle: bundleName, item: itemName, quantity: 1 },
+		]);
 	}
 );
 
-export function unstoreItem(bundleName: BundleName, itemName: ItemName) {
-	const storedItem = getStoredItemIfExists(bundleName, itemName);
+export const unstoreItem = action(
+	storedItems,
+	"unstoreItem",
+	(storedItems, bundleName: BundleName, itemName: ItemName) => {
+		console.log(bundleName, itemName);
 
-	if (!storedItem) return;
-
-	if (storedItem.quantity > 1) {
-		// TODO: Check this
-		storedItem.quantity--;
-	} else {
 		storedItems.set([
-			...storedItems.get().filter((item) => item !== storedItem),
+			...storedItems
+				.get()
+				.filter(
+					(item) => !(item.bundle === bundleName && item.item === itemName)
+				),
 		]);
 	}
-}
+);
 
 export const getBundlesInRoom = (room: Room) =>
 	room.bundles.map((bundleName) => ({

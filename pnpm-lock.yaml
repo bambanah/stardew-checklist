@@ -23,6 +23,9 @@ dependencies:
   nanostores:
     specifier: ^0.9.1
     version: 0.9.1
+  solid-icons:
+    specifier: ^1.0.8
+    version: 1.0.8(solid-js@1.7.6)
   solid-js:
     specifier: ^1.7.6
     version: 1.7.6
@@ -4385,6 +4388,18 @@ packages:
       ansi-styles: 6.2.1
       is-fullwidth-code-point: 4.0.0
     dev: true
+
+  /solid-icons@1.0.8(solid-js@1.7.6):
+    resolution:
+      {
+        integrity: sha512-7aQGNjM5ZAGlE25s4APE+2QEQUyltqsTuhfO0OhYZaH2wbY0ZAqL7qRQJPMN98qhoIfroYRNEi/0l7UJN902MA==,
+      }
+    engines: { node: ">= 16" }
+    peerDependencies:
+      solid-js: "*"
+    dependencies:
+      solid-js: 1.7.6
+    dev: false
 
   /solid-js@1.7.6:
     resolution:

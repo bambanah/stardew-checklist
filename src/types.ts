@@ -13,14 +13,13 @@ export type Skill = (typeof SKILLS)[number];
 
 export type Quality = "regular" | "silver" | "gold" | "iridium";
 
-type BundleItem =
+export type BundleItem =
 	| ItemName
 	| {
 			item: ItemName;
 			quantity?: number;
 			quality?: Quality;
 	  };
-
 export type Bundle = {
 	name: string;
 	reward: string | readonly [string, string];
