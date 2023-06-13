@@ -4,7 +4,6 @@ import SeasonIcon from "./atoms/SeasonIcon";
 
 interface Props {
 	seasons: readonly Season[];
-	displayIfAll?: boolean;
 }
 
 const SeasonDisplay = (props: Props) => {
