@@ -1,7 +1,11 @@
 import { ITEMS } from "@/constants/items";
-import { storedItems, storeItem, unstoreItem } from "@/store/item-store";
+import {
+	isBundleComplete,
+	isItemStored,
+	storeItem,
+	unstoreItem,
+} from "@/store/item-store";
 import type { BundleItem, BundleName } from "@/types";
-import { useStore } from "@nanostores/solid";
 import classNames from "classnames";
 import {
 	FaRegularCircle,
@@ -14,21 +18,21 @@ import SeasonDisplay from "./SeasonDisplay";
 interface Props {
 	bundleName: BundleName;
 	item: BundleItem;
-	isBundleComplete: () => boolean;
 }
 
 export default function BundleItem(props: Props) {
-	const $storedItems = useStore(storedItems);
-
 	let tooltipRef: HTMLDivElement | undefined;
 
 	const itemId = () =>
 		typeof props.item === "string" ? props.item : props.item.item;
+	const itemStoreId = () =>
+		typeof props.item === "string" ? props.item : props.item.id ?? itemId();
 	const quantity = () =>
 		typeof props.item === "string" ? 1 : props.item.quantity ?? 1;
+
 	const itemDetails = () => ITEMS[itemId()];
 
-	const isStored = () => !!$storedItems()[props.bundleName]?.items[itemId()];
+	const isStored = () => isItemStored(props.bundleName, itemStoreId());
 
 	const showTooltip = (show = false) => {
 		if (tooltipRef) tooltipRef.style.display = show ? "block" : "none";
@@ -39,19 +43,19 @@ export default function BundleItem(props: Props) {
 			<button
 				onClick={() =>
 					isStored()
-						? unstoreItem(props.bundleName, itemId())
-						: storeItem(props.bundleName, itemId())
+						? unstoreItem(props.bundleName, itemStoreId())
+						: storeItem(props.bundleName, itemStoreId())
 				}
 				class={classNames([
-					"relative flex w-full items-center justify-between gap-2 rounded border-2 p-1 transition-colors dark:border dark:border-neutral-500",
+					"relative flex w-full items-center justify-between gap-2 rounded border-2 p-1 transition-[color,fill] duration-75 hover:bg-neutral-600 dark:border dark:border-neutral-500",
 					isStored() ? "" : "",
-					(props.isBundleComplete() || isStored()) &&
+					(isBundleComplete(props.bundleName) || isStored()) &&
 						"fill-gray-500 text-gray-500 dark:fill-neutral-500 dark:text-neutral-500",
 				])}
 			>
 				<div class="flex flex-grow items-center gap-2">
 					{isStored() ? (
-						<FaSolidCircleCheck class="fill-green-700 dark:fill-green-500" />
+						<FaSolidCircleCheck class="fill-green-700 dark:fill-green-400" />
 					) : (
 						<FaRegularCircle />
 					)}

@@ -17,6 +17,7 @@ export type BundleItem =
 	| ItemName
 	| {
 			item: ItemName;
+			id?: string;
 			quantity?: number;
 			quality?: Quality;
 	  };

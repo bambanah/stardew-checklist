@@ -45,8 +45,8 @@ export const BUNDLES = {
 		name: "Construction Bundle",
 		reward: "Charcoal Kiln",
 		items: [
-			{ item: "wood", quantity: 99 },
-			{ item: "wood", quantity: 99 },
+			{ item: "wood", quantity: 99, id: "wood:0" },
+			{ item: "wood", quantity: 99, id: "wood:1" },
 			{ item: "stone", quantity: 99 },
 			{ item: "hardwood", quantity: 10 },
 		],
