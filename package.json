@@ -46,6 +46,6 @@
 	},
 	"lint-staged": {
 		"*": "prettier --ignore-unknown --write",
-		"*.{ts,tsx}": "lint"
+		"*.{ts,tsx}": "pnpm lint"
 	}
 }

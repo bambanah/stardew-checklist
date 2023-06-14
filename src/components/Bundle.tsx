@@ -22,16 +22,18 @@ export default function Bundle(props: Props) {
 		itemsStoredInBundle() >= props.bundle.items_required;
 
 	return (
-		<div class="flex gap-2 flex-col flex-0 shadow-md w-full md:w-[20rem] p-2 border">
-			<p class="flex justify-between items-center fill-green-500">
-				<Heading size="sm" class="">
-					{props.bundle.name}
+		<div class="flex-0 flex w-full flex-col gap-4 border p-2 shadow-md md:w-[22rem]">
+			<p class="flex items-center justify-between fill-green-500">
+				<Heading size="sm">
+					{props.bundle.name} ({itemsStoredInBundle().toString()}/
+					{props.bundle.items_required.toString()})
 				</Heading>
 				{isBundleComplete() && <FaSolidCircleCheck size="20" />}
 			</p>
 			<progress
-				max={props.bundle.items_required}
+				class="rounded-sm fill-slate-700"
 				value={itemsStoredInBundle()}
+				max={props.bundle.items_required}
 			/>
 
 			<div class="flex flex-col gap-2">

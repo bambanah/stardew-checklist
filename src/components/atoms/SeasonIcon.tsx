@@ -6,11 +6,13 @@ interface Props {
 }
 
 const SeasonIcon = (props: Props) => {
+	const className = "w-6";
+
 	const seasonIcons: Record<Season, JSXElement> = {
-		spring: <img src="/spring.png" class="w-6" title="Spring" />,
-		summer: <img src="/summer.png" class="w-6" title="Summer" />,
-		fall: <img src="/fall.png" class="w-6" title="Fall" />,
-		winter: <img src="/winter.png" class="w-6" title="Winter" />,
+		spring: <img src="/spring.png" class={className} title="Spring" />,
+		summer: <img src="/summer.png" class={className} title="Summer" />,
+		fall: <img src="/fall.png" class={className} title="Fall" />,
+		winter: <img src="/winter.png" class={className} title="Winter" />,
 	};
 	return <span>{seasonIcons[props.season]}</span>;
 };

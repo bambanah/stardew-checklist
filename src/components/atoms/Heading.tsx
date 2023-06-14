@@ -2,7 +2,7 @@ type Size = "sm" | "md" | "lg" | "xl";
 
 interface Props {
 	size?: Size;
-	children: string;
+	children: string | string[];
 	class?: string;
 }
 

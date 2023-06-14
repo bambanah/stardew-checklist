@@ -43,13 +43,13 @@ export default function BundleItem(props: Props) {
 						: storeItem(props.bundleName, itemId())
 				}
 				class={classNames([
-					"flex relative items-center justify-between gap-2 border-2 p-2 w-full rounded transition-colors",
+					"relative flex w-full items-center justify-between gap-2 rounded border-2 p-2 transition-colors",
 					isStored() ? "border-green-700" : "",
 					(props.isBundleComplete() || isStored()) &&
-						"text-gray-500 fill-gray-500",
+						"fill-gray-500 text-gray-500",
 				])}
 			>
-				<div class="flex items-center flex-grow gap-2">
+				<div class="flex flex-grow items-center gap-2">
 					{isStored() ? (
 						<FaSolidCircleCheck class="fill-green-700" />
 					) : (
