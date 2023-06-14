@@ -4,7 +4,9 @@
 
 html,
 body {
-	@apply m-0 p-0 bg-gray-50;
+	@apply m-0 p-0;
+	@apply bg-neutral-50 text-neutral-500;
+	@apply dark:bg-zinc-800 dark:fill-neutral-200 dark:text-neutral-200;
 }
 
 code {

@@ -1,4 +1,4 @@
-type Size = "sm" | "md" | "lg" | "xl";
+type Size = "xs" | "sm" | "md" | "lg" | "xl";
 
 interface Props {
 	size?: Size;
@@ -8,12 +8,13 @@ interface Props {
 
 const Heading = (props: Props) => {
 	const sizeStyles: Record<Size, string> = {
+		xs: "text-lg",
 		sm: "text-xl",
 		md: "text-3xl",
 		lg: "text-4xl",
 		xl: "text-6xl",
 	};
-	const baseStyle = "font-sans font-semibold";
+	const baseStyle = "font-semibold";
 
 	return (
 		<h1

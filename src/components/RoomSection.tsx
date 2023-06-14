@@ -10,11 +10,11 @@ interface Props {
 
 export default function RoomSection(props: Props) {
 	return (
-		<div class="py-8">
-			<div class="w-full max-w-6xl mx-auto">
+		<div>
+			<div class="mx-auto w-full max-w-4xl">
 				<Heading size="md">{props.room.name}</Heading>
 			</div>
-			<div class="flex gap-4 gap-y-10 flex-wrap justify-center items-start py-4">
+			<div class="flex flex-wrap items-start justify-center gap-4 gap-y-10 py-4">
 				<For each={getBundlesInRoom(props.room)}>
 					{(bundle) => <Bundle bundle={bundle} />}
 				</For>

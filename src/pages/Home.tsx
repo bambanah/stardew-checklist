@@ -6,7 +6,7 @@ import Layout from "@/layouts/Layout";
 export default function Home() {
 	return (
 		<Layout>
-			<div class="divide-y">
+			<div class="flex flex-col gap-4">
 				<For each={Object.values(ROOMS)}>
 					{(room) => <RoomSection room={room} />}
 				</For>
