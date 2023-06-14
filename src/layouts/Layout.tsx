@@ -12,7 +12,7 @@ const Layout = (props: Props) => {
 			<div class="mx-auto py-8 text-center">
 				<Heading size="lg">Stardew Community Bundle Checklist</Heading>
 			</div>
-			<main class="mx-auto w-full max-w-8xl px-4 py-4">{props.children}</main>
+			<main class="max-w-8xl mx-auto w-full px-2 py-4">{props.children}</main>
 		</>
 	);
 };

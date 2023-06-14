@@ -9,12 +9,12 @@ interface Props {
 const Heading = (props: Props) => {
 	const sizeStyles: Record<Size, string> = {
 		xs: "text-lg",
-		sm: "text-xl",
-		md: "text-3xl",
+		sm: "text-2xl",
+		md: "text-4xl",
 		lg: "text-4xl",
 		xl: "text-6xl",
 	};
-	const baseStyle = "font-semibold";
+	const baseStyle = "font-stardew";
 
 	return (
 		<h1

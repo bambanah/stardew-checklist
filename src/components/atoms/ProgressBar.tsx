@@ -19,7 +19,7 @@ const ProgressBar = (props: Props) => {
 					"h-full transition-all",
 					props.value >= props.max
 						? "bg-green-500 dark:bg-green-400"
-						: "bg-blue-500",
+						: "bg-pink-500",
 				])}
 				style={{
 					width: `${(props.value / props.max) * 100}%`,

@@ -47,7 +47,7 @@ export default function BundleItem(props: Props) {
 						: storeItem(props.bundleName, itemStoreId())
 				}
 				class={classNames([
-					"relative flex w-full items-center justify-between gap-2 rounded border-2 p-1 transition-[color,fill] duration-75 hover:bg-slate-600 dark:border dark:border-slate-500",
+					"relative flex w-full items-center justify-between gap-2 rounded border-2 p-2 transition-[color,fill] duration-75 hover:bg-slate-600 dark:border dark:border-slate-500 md:p-1",
 					isStored() ? "" : "",
 					(isBundleComplete(props.bundleName) || isStored()) &&
 						"fill-slate-500 text-slate-500 dark:fill-slate-500 dark:text-slate-500",
@@ -59,7 +59,7 @@ export default function BundleItem(props: Props) {
 					) : (
 						<FaRegularCircle />
 					)}
-					<span class="text-sm font-medium">
+					<span class="text-xl font-medium">
 						{itemDetails().name} {quantity() > 1 && `(${quantity()})`}
 					</span>
 				</div>

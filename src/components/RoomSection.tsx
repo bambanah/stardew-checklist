@@ -15,14 +15,9 @@ export default function RoomSection(props: Props) {
 	const [isCollapsed, setIsCollapsed] = createSignal(false);
 
 	return (
-		<div
-			class={classNames([
-				"flex flex-col rounded-xl border p-4 transition-[border-color]",
-				isCollapsed() ? "border-transparent" : "border-slate-400",
-			])}
-		>
+		<div class={classNames(["flex flex-col md:px-4 md:py-2"])}>
 			<button
-				class="mx-auto flex w-full max-w-4xl items-center gap-2"
+				class="mx-auto flex w-full max-w-lg items-center gap-2 lg:max-w-4xl"
 				onClick={() => setIsCollapsed(!isCollapsed())}
 			>
 				<FaSolidChevronDown
@@ -42,10 +37,10 @@ export default function RoomSection(props: Props) {
 			</button>
 			<div
 				class={classNames([
-					"box-border flex flex-wrap items-start justify-center gap-4 gap-y-10 overflow-hidden transition-[max-height,padding,opacity]",
+					"box-border flex flex-wrap items-start justify-center gap-2 overflow-hidden transition-[max-height,padding,opacity] md:gap-y-10",
 					isCollapsed()
 						? "max-h-0 p-0 opacity-0"
-						: "max-h-[100rem] pt-4 opacity-100",
+						: "max-h-[1000rem] pt-4 opacity-100",
 				])}
 			>
 				<For each={getBundlesInRoom(props.room)}>

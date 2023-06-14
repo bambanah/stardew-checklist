@@ -13,7 +13,9 @@ import { Route, Router, Routes } from "@solidjs/router";
 import { lazy } from "solid-js";
 
 import "./index.css";
-import "@fontsource/inter/latin.css";
+import "@fontsource/inter/latin-400.css";
+import "@fontsource/inter/latin-500.css";
+import "@fontsource/inter/latin-600.css";
 
 const Home = lazy(() => import("@/pages/Home"));
 

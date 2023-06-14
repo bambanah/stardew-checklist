@@ -7,6 +7,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
+				stardew: ["Stardew", ...defaultTheme.fontFamily.serif],
 			},
 		},
 	},
