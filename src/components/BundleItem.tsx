@@ -47,10 +47,10 @@ export default function BundleItem(props: Props) {
 						: storeItem(props.bundleName, itemStoreId())
 				}
 				class={classNames([
-					"relative flex w-full items-center justify-between gap-2 rounded border-2 p-1 transition-[color,fill] duration-75 hover:bg-neutral-600 dark:border dark:border-neutral-500",
+					"relative flex w-full items-center justify-between gap-2 rounded border-2 p-1 transition-[color,fill] duration-75 hover:bg-slate-600 dark:border dark:border-slate-500",
 					isStored() ? "" : "",
 					(isBundleComplete(props.bundleName) || isStored()) &&
-						"fill-gray-500 text-gray-500 dark:fill-neutral-500 dark:text-neutral-500",
+						"fill-slate-500 text-slate-500 dark:fill-slate-500 dark:text-slate-500",
 				])}
 			>
 				<div class="flex flex-grow items-center gap-2">

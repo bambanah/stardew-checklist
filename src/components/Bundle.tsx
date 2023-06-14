@@ -18,14 +18,14 @@ export default function Bundle(props: Props) {
 		$storedItems()[props.bundle.id]?.length ?? 0;
 
 	return (
-		<div class="flex-0 flex w-full flex-col gap-1 rounded border shadow-md dark:border-none dark:bg-neutral-700 md:w-[16rem]">
+		<div class="flex-0 flex w-full flex-col gap-1 rounded border shadow-md dark:border-none dark:bg-slate-800 md:w-[16rem]">
 			<ProgressBar
 				class="rounded-t"
 				value={itemsStoredInBundle()}
 				max={props.bundle.items_required}
 			/>
 
-			<div class="flex flex-col gap-1 px-2 pb-2">
+			<div class="flex flex-col px-2 pb-2">
 				<p class="flex items-center justify-between">
 					<Heading size="xs">
 						{props.bundle.name.replace(" Bundle", "")} (

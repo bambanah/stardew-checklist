@@ -77,13 +77,13 @@ export const ITEMS = {
 		name: "Winter Root",
 		seasons: ["winter"],
 		skills: ["foraging", "combat"],
-		source: "Winter Foraging; Drop from Slimes (levels 41-79)",
+		source: "Winter Foraging; Drop from Slimes (floors 41-79)",
 	},
 	crystal_fruit: {
 		name: "Crystal Fruit",
 		seasons: ["winter"],
 		skills: ["foraging", "combat"],
-		source: "Winter Foraging; Drop from Coal Sprites (levels 41-79)",
+		source: "Winter Foraging; Drop from Coal Sprites (floors 41-79)",
 	},
 	snow_yam: {
 		name: "Snow Yam",
@@ -125,7 +125,7 @@ export const ITEMS = {
 		name: "Sap",
 		seasons: ["spring", "summer", "fall", "winter"],
 		skills: ["foraging"],
-		source: "Chopping Trees; Drop from Slimes (levels 41-79)",
+		source: "Chopping Trees; Drop from Slimes (floors 41-79)",
 	},
 	coconut: {
 		name: "Coconut",

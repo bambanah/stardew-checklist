@@ -18,7 +18,7 @@ export default function RoomSection(props: Props) {
 		<div
 			class={classNames([
 				"flex flex-col rounded-xl border p-4 transition-[border-color]",
-				isCollapsed() ? "border-transparent" : "border-neutral-400",
+				isCollapsed() ? "border-transparent" : "border-slate-400",
 			])}
 		>
 			<button

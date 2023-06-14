@@ -10,7 +10,7 @@ const ProgressBar = (props: Props) => {
 	return (
 		<div
 			class={classNames([
-				"h-1 w-full overflow-hidden bg-neutral-200 dark:bg-neutral-500",
+				"h-1 w-full overflow-hidden bg-slate-200 dark:bg-slate-500",
 				props.class,
 			])}
 		>
