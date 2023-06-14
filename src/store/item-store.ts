@@ -1,7 +1,6 @@
 import { BUNDLES } from "@/constants/bundles";
-import { ITEMS } from "@/constants/items";
 import { ROOMS } from "@/constants/rooms";
-import type { Bundle, BundleName, ItemName, Room, RoomName } from "@/types";
+import type { BundleName, ItemName, Room, RoomName } from "@/types";
 import { persistentMap } from "@nanostores/persistent";
 import { useStore } from "@nanostores/solid";
 import { action } from "nanostores";
@@ -27,6 +26,7 @@ export const storeItem = action(
 	storedItems,
 	"storeItem",
 	(storedItems, bundleName: BundleName, itemName: string) => {
+		// TODO: Remove any invalid stored items (ie. from manually modifying localStorage value)
 		storedItems.setKey(bundleName, [
 			...(storedItems.get()[bundleName] ?? []),
 			itemName,
