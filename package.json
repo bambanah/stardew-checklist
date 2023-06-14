@@ -8,7 +8,8 @@
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"lint": "eslint . --fix --ignore-path .gitignore"
 	},
 	"dependencies": {
 		"@fontsource/inter": "^5.0.3",
@@ -23,8 +24,8 @@
 	"devDependencies": {
 		"@commitlint/cli": "^17.6.5",
 		"@commitlint/config-conventional": "^17.6.5",
-		"@typescript-eslint/eslint-plugin": "^5.59.9",
-		"@typescript-eslint/parser": "^5.59.9",
+		"@typescript-eslint/eslint-plugin": "^5.59.11",
+		"@typescript-eslint/parser": "^5.59.11",
 		"autoprefixer": "^10.4.14",
 		"eslint": "^8.42.0",
 		"eslint-config-prettier": "^8.8.0",
@@ -45,6 +46,6 @@
 	},
 	"lint-staged": {
 		"*": "prettier --ignore-unknown --write",
-		"*.{astro,ts,tsx}": "eslint --fix"
+		"*.{ts,tsx}": "lint"
 	}
 }
