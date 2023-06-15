@@ -6,6 +6,7 @@ import { FaSolidCircleCheck } from "solid-icons/fa";
 import { For } from "solid-js";
 import BundleItem from "./BundleItem";
 import ProgressBar from "./atoms/ProgressBar";
+import Display from "./atoms/Display";
 
 interface Props {
 	bundle: Bundle & { id: BundleName };
@@ -18,7 +19,7 @@ export default function Bundle(props: Props) {
 		$storedItems()[props.bundle.id]?.length ?? 0;
 
 	return (
-		<div class="flex w-full break-inside-avoid-column flex-col gap-1 rounded border shadow-md dark:border-none dark:bg-slate-800 sm:w-[16rem]">
+		<div class="flex w-full break-inside-avoid-column flex-col gap-1 rounded border bg-stardew-yellow-600 shadow-md dark:border-none dark:bg-slate-800 sm:w-[16rem]">
 			<ProgressBar
 				class="rounded-t"
 				value={itemsStoredInBundle()}
@@ -27,11 +28,11 @@ export default function Bundle(props: Props) {
 
 			<div class="flex flex-col gap-1 px-2 pb-2">
 				<p class="flex items-center justify-between">
-					<Heading size="sm">
+					<Display size="sm">
 						{props.bundle.name.replace(" Bundle", "")} (
 						{itemsStoredInBundle().toString()}/
 						{props.bundle.items_required.toString()})
-					</Heading>
+					</Display>
 					{isBundleComplete(props.bundle.id) && (
 						<FaSolidCircleCheck
 							size="20"

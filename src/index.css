@@ -5,9 +5,21 @@
 html,
 body {
 	@apply m-0 p-0;
-	@apply bg-slate-50 fill-slate-500 text-slate-500;
+	@apply bg-stardew-background bg-fixed;
+	@apply fill-slate-500 text-slate-700;
 	@apply dark:bg-slate-900 dark:fill-slate-200 dark:text-slate-200;
-	@apply font-stardew;
+}
+
+.stardew-border {
+	border: 10px solid transparent;
+	border-image: url("/images/menu_border.png") 33% stretch;
+	border-radius: 10px;
+}
+
+.tooltip-border {
+	border: 3px solid transparent;
+	border-image: url("/images/item_frame_full.png") 33% stretch;
+	border-radius: 3px;
 }
 
 code {
@@ -16,5 +28,5 @@ code {
 
 @font-face {
 	font-family: stardew;
-	src: url(StardewValley.woff);
+	src: url("/fonts/stardew-valley.woff");
 }

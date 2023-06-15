@@ -1,26 +1,28 @@
+import classNames from "classnames";
+
 type Size = "xs" | "sm" | "md" | "lg" | "xl";
 
-interface Props {
+export interface HeadingProps {
 	size?: Size;
 	children: string | string[];
 	class?: string;
 }
 
-const Heading = (props: Props) => {
+const Heading = (props: HeadingProps) => {
 	const sizeStyles: Record<Size, string> = {
-		xs: "text-lg",
-		sm: "text-2xl",
-		md: "text-4xl",
-		lg: "text-4xl",
-		xl: "text-6xl",
+		xs: "text-lg md:text-xl",
+		sm: "text-xl md:text-2xl",
+		md: "text-2xl md:text-4xl",
+		lg: "text-3xl md:text-4xl",
+		xl: "text-4xl md:text-6xl",
 	};
-	const baseStyle = "font-stardew";
 
 	return (
 		<h1
-			class={`${baseStyle} ${sizeStyles[props.size ?? "md"]} ${
-				props.class ?? ""
-			}`}
+			class={classNames([
+				sizeStyles[props.size ?? "md"],
+				props.class ?? "font-heading",
+			])}
 		>
 			{props.children}
 		</h1>

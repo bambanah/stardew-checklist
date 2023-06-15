@@ -47,10 +47,10 @@ export default function BundleItem(props: Props) {
 						: storeItem(props.bundleName, itemStoreId())
 				}
 				class={classNames([
-					"relative flex w-full items-center justify-between gap-2 rounded border-2 p-2 transition-[color,fill] duration-75 hover:bg-slate-600 dark:border dark:border-slate-500 md:p-1",
-					isStored() ? "" : "",
+					"relative flex w-full items-center justify-between gap-2 rounded border border-amber-200 p-2 transition-[color,fill] duration-75 hover:bg-amber-200 dark:border-slate-500 dark:hover:bg-slate-600 md:p-1",
+
 					(isBundleComplete(props.bundleName) || isStored()) &&
-						"fill-slate-500 text-slate-500 dark:fill-slate-500 dark:text-slate-500",
+						"fill-zinc-500 text-zinc-500",
 				])}
 			>
 				<div class="flex flex-grow items-center gap-2">
@@ -59,12 +59,17 @@ export default function BundleItem(props: Props) {
 					) : (
 						<FaRegularCircle />
 					)}
-					<span class="text-xl font-medium">
+					<span
+						class={classNames([
+							"text-left font-stardew text-xl",
+							isStored() && "line-through",
+						])}
+					>
 						{itemDetails().name} {quantity() > 1 && `(${quantity()})`}
 					</span>
 				</div>
 
-				{itemDetails().seasons.length < 4 && (
+				{![0, 4].includes(itemDetails().seasons.length) && (
 					<SeasonDisplay seasons={itemDetails().seasons} />
 				)}
 				{itemDetails().source && (

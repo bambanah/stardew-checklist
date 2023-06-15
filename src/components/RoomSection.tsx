@@ -5,7 +5,7 @@ import { BiSolidBadgeCheck } from "solid-icons/bi";
 import { FaSolidChevronDown } from "solid-icons/fa";
 import { For, createSignal } from "solid-js";
 import Bundle from "./Bundle";
-import Heading from "./atoms/Heading";
+import Display from "./atoms/Display";
 
 interface Props {
 	room: Room & { id: RoomName };
@@ -15,7 +15,11 @@ export default function RoomSection(props: Props) {
 	const [isCollapsed, setIsCollapsed] = createSignal(false);
 
 	return (
-		<div class={classNames(["flex flex-col md:px-4 md:py-2"])}>
+		<div
+			class={classNames([
+				"stardew-border flex flex-col bg-stardew-yellow-500 md:px-4 md:py-2",
+			])}
+		>
 			<button
 				class="mx-auto flex w-full max-w-lg items-center gap-2 lg:max-w-4xl"
 				onClick={() => setIsCollapsed(!isCollapsed())}
@@ -27,7 +31,7 @@ export default function RoomSection(props: Props) {
 						isCollapsed() && "-rotate-90",
 					])}
 				/>
-				<Heading size="md">{props.room.name}</Heading>
+				<Display>{props.room.name}</Display>
 				{isRoomComplete(props.room.id) && (
 					<BiSolidBadgeCheck
 						size="28"
