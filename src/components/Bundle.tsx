@@ -1,6 +1,5 @@
-import { isBundleComplete, storedItems } from "@/store/item-store";
+import { isBundleComplete, bundleStore } from "@/store/item-store";
 import type { Bundle, BundleName } from "@/types";
-import { useStore } from "@nanostores/solid";
 import { FaSolidCircleCheck } from "solid-icons/fa";
 import { For } from "solid-js";
 import BundleItem from "./BundleItem";
@@ -13,10 +12,9 @@ interface Props {
 }
 
 export default function Bundle(props: Props) {
-	const $storedItems = useStore(storedItems);
+	const [bundleState] = bundleStore;
 
-	const itemsStoredInBundle = () =>
-		$storedItems()[props.bundle.id]?.length ?? 0;
+	const itemsStoredInBundle = () => bundleState[props.bundle.id]?.length ?? 0;
 
 	return (
 		<div

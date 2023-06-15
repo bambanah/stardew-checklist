@@ -21,7 +21,7 @@ const Heading = (props: HeadingProps) => {
 		<h1
 			class={classNames([
 				sizeStyles[props.size ?? "md"],
-				props.class ?? "font-heading",
+				props.class ?? "font-serif",
 			])}
 		>
 			{props.children}

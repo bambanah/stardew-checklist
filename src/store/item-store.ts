@@ -1,9 +1,7 @@
 import { BUNDLES } from "@/constants/bundles";
 import { ROOMS } from "@/constants/rooms";
 import type { BundleName, ItemName, Room, RoomName } from "@/types";
-import { persistentMap } from "@nanostores/persistent";
-import { useStore } from "@nanostores/solid";
-import { action } from "nanostores";
+import { persistentStore } from "./utils";
 
 export type StoredItem = {
 	bundle: BundleName;
@@ -11,55 +9,32 @@ export type StoredItem = {
 	quantity: number;
 };
 
-export const storedItems = persistentMap<{
+export const bundleStore = persistentStore<{
 	[key in BundleName]?: string[];
-}>(
-	"storedItems:",
-	{},
-	{
-		encode: JSON.stringify,
-		decode: JSON.parse,
-	}
-);
+}>("storedItems", {});
 
-export const storeItem = action(
-	storedItems,
-	"storeItem",
-	(storedItems, bundleName: BundleName, itemName: string) => {
-		// TODO: Remove any invalid stored items (ie. from manually modifying localStorage value)
-		storedItems.setKey(bundleName, [
-			...(storedItems.get()[bundleName] ?? []),
-			itemName,
-		]);
-	}
-);
+export const storeItem = (bundleName: BundleName, itemName: string) => {
+	const [storedItems, setStoredItems] = bundleStore;
 
-export const unstoreItem = action(
-	storedItems,
-	"unstoreItem",
-	(storedItems, bundleName: BundleName, itemName: string) => {
-		const currItems = storedItems.get()[bundleName];
+	setStoredItems(bundleName, [...(storedItems[bundleName] ?? []), itemName]);
+};
 
-		if (currItems) {
-			storedItems.setKey(
-				bundleName,
-				storedItems.get()[bundleName]?.filter((item) => item !== itemName)
-			);
-		}
-	}
-);
+export const unstoreItem = (bundleName: BundleName, itemName: string) => {
+	const [storedItems, setStoredItems] = bundleStore;
+
+	setStoredItems(
+		bundleName,
+		storedItems[bundleName]?.filter((item) => item !== itemName)
+	);
+};
 
 /**
  * GETTERS
  */
-
-const $storedItems = useStore(storedItems);
-
-export const isItemStored = (bundleName: BundleName, itemName: string) =>
-	!!$storedItems()[bundleName]?.includes(itemName);
+const [storedItems] = bundleStore;
 
 export const isBundleComplete = (bundleName: BundleName) => {
-	const itemsStoredInBundle = $storedItems()[bundleName]?.length ?? 0;
+	const itemsStoredInBundle = storedItems[bundleName]?.length ?? 0;
 
 	return itemsStoredInBundle >= BUNDLES[bundleName].items_required;
 };

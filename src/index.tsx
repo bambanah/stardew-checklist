@@ -9,15 +9,15 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 	);
 }
 
-import Home from "@/pages/Home";
+import { lazy } from "solid-js";
+
+const Home = lazy(() => import("@/pages/Home"));
 
 import "./index.css";
 
-// Fonts
 import "@fontsource/inter/latin-400.css";
 import "@fontsource/inter/latin-500.css";
 import "@fontsource/inter/latin-600.css";
-import "@fontsource/patua-one/latin-400.css";
 
 render(
 	() => <Home />,

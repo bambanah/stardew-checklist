@@ -1,7 +1,6 @@
 import { getBundlesInRoom, isRoomComplete } from "@/store/item-store";
 import { settingsStore, toggleRoomCollapsed } from "@/store/settings-store";
 import type { Room, RoomName } from "@/types";
-import { useStore } from "@nanostores/solid";
 import classNames from "classnames";
 import { BiSolidBadgeCheck } from "solid-icons/bi";
 import { FaSolidChevronDown } from "solid-icons/fa";
@@ -14,10 +13,9 @@ interface Props {
 }
 
 export default function RoomSection(props: Props) {
-	const $settingsStore = useStore(settingsStore);
+	const [settings] = settingsStore;
 
-	const isCollapsed = () =>
-		$settingsStore().collapsedRooms.includes(props.room.id);
+	const isCollapsed = () => settings.collapsedRooms.includes(props.room.id);
 
 	return (
 		<div

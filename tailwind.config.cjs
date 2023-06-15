@@ -7,7 +7,6 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
-				heading: ["Patua One", ...defaultTheme.fontFamily.serif],
 				stardew: ["Stardew", ...defaultTheme.fontFamily.serif],
 			},
 			colors: {

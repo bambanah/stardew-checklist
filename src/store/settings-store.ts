@@ -1,6 +1,5 @@
-import { BundleName, RoomName } from "@/types";
-import { persistentMap } from "@nanostores/persistent";
-import { action } from "nanostores";
+import { persistentStore } from "@/store/utils";
+import { RoomName } from "@/types";
 
 export type Settings = {
 	bundleMode: "normal" | "remixed";
@@ -10,32 +9,23 @@ export type Settings = {
 	collapsedRooms: RoomName[];
 };
 
-export const settingsStore = persistentMap<Settings>(
-	"settings:",
-	{
-		bundleMode: "normal",
-		hideCompleted: "false",
-		hideSpoilers: "false",
-		layoutStyle: "list",
-		collapsedRooms: [],
-	},
-	{ encode: JSON.stringify, decode: JSON.parse }
-);
+export const settingsStore = persistentStore<Settings>("settings", {
+	bundleMode: "normal",
+	hideCompleted: "false",
+	hideSpoilers: "false",
+	layoutStyle: "list",
+	collapsedRooms: [],
+});
 
-export const toggleRoomCollapsed = action(
-	settingsStore,
-	"collapseRoom",
-	(settingsStore, roomName: RoomName) => {
-		if (settingsStore.get().collapsedRooms.includes(roomName)) {
-			settingsStore.setKey(
-				"collapsedRooms",
-				settingsStore.get().collapsedRooms.filter((room) => room !== roomName)
-			);
-		} else {
-			settingsStore.setKey("collapsedRooms", [
-				...settingsStore.get().collapsedRooms,
-				roomName,
-			]);
-		}
+export const toggleRoomCollapsed = (roomName: RoomName) => {
+	const [state, setState] = settingsStore;
+
+	if (state.collapsedRooms.includes(roomName)) {
+		setState(
+			"collapsedRooms",
+			state.collapsedRooms.filter((room) => room !== roomName)
+		);
+	} else {
+		setState("collapsedRooms", [...state.collapsedRooms, roomName]);
 	}
-);
+};

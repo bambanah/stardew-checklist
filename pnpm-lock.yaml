@@ -8,24 +8,9 @@ dependencies:
   "@fontsource/inter":
     specifier: ^5.0.3
     version: 5.0.3
-  "@fontsource/patua-one":
-    specifier: ^5.0.3
-    version: 5.0.3
-  "@nanostores/persistent":
-    specifier: ^0.9.0
-    version: 0.9.0(nanostores@0.9.1)
-  "@nanostores/solid":
-    specifier: ^0.4.2
-    version: 0.4.2(nanostores@0.9.1)(solid-js@1.7.6)
-  "@solidjs/router":
-    specifier: ^0.8.2
-    version: 0.8.2(solid-js@1.7.6)
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
-  nanostores:
-    specifier: ^0.9.1
-    version: 0.9.1
   solid-icons:
     specifier: ^1.0.8
     version: 1.0.8(solid-js@1.7.6)
@@ -1094,13 +1079,6 @@ packages:
       }
     dev: false
 
-  /@fontsource/patua-one@5.0.3:
-    resolution:
-      {
-        integrity: sha512-/we274Hx75OJIMx9/h9yycebjgJu0L9XZODLnZtiGEuJrQ+Dsb0279xcjLOHVGde35vLqkzhUbA36/u8lEhVeQ==,
-      }
-    dev: false
-
   /@humanwhocodes/config-array@0.11.10:
     resolution:
       {
@@ -1200,31 +1178,6 @@ packages:
       "@jridgewell/sourcemap-codec": 1.4.15
     dev: true
 
-  /@nanostores/persistent@0.9.0(nanostores@0.9.1):
-    resolution:
-      {
-        integrity: sha512-9OvMOWs0NRiFXmZQXYsb7vGKTt+3XM0/gHl/gGdRTGvYBSaUwJrcmrOx8oc2jmj3QEGoT7JoeUStTGZUy0fSsw==,
-      }
-    engines: { node: ^16.0.0 || ^18.0.0 || >=20.0.0 }
-    peerDependencies:
-      nanostores: ^0.9.0
-    dependencies:
-      nanostores: 0.9.1
-    dev: false
-
-  /@nanostores/solid@0.4.2(nanostores@0.9.1)(solid-js@1.7.6):
-    resolution:
-      {
-        integrity: sha512-8v32+C9KdRbnvP4x4Oiw/CtL1tZwbRxYfmFsPIY9PXevCgxSFnicG6VnLLtNAR7F0kl8Ec7OROHO34Ffv0KDzg==,
-      }
-    peerDependencies:
-      nanostores: ">=0.8.0"
-      solid-js: ^1.6.0
-    dependencies:
-      nanostores: 0.9.1
-      solid-js: 1.7.6
-    dev: false
-
   /@nodelib/fs.scandir@2.1.5:
     resolution:
       {
@@ -1254,17 +1207,6 @@ packages:
       "@nodelib/fs.scandir": 2.1.5
       fastq: 1.15.0
     dev: true
-
-  /@solidjs/router@0.8.2(solid-js@1.7.6):
-    resolution:
-      {
-        integrity: sha512-gUKW+LZqxtX6y/Aw6JKyy4gQ9E7dLqp513oB9pSYJR1HM5c56Pf7eijzyXX+b3WuXig18Cxqah4tMtF0YGu80w==,
-      }
-    peerDependencies:
-      solid-js: ^1.5.3
-    dependencies:
-      solid-js: 1.7.6
-    dev: false
 
   /@tsconfig/node10@1.0.9:
     resolution:
@@ -4095,14 +4037,6 @@ packages:
     engines: { node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1 }
     hasBin: true
     dev: true
-
-  /nanostores@0.9.1:
-    resolution:
-      {
-        integrity: sha512-DmAL3oTieICqnl2XVq5wegFE7EXIoPnIv1CNWNGEhXpwrHk7Prctch4/nX5x95i95WHdesI5sPeoNAUFpFsGtg==,
-      }
-    engines: { node: ^16.0.0 || ^18.0.0 || >=20.0.0 }
-    dev: false
 
   /natural-compare-lite@1.4.0:
     resolution:

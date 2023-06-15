@@ -1,7 +1,7 @@
 import { ITEMS } from "@/constants/items";
 import {
+	bundleStore,
 	isBundleComplete,
-	isItemStored,
 	storeItem,
 	unstoreItem,
 } from "@/store/item-store";
@@ -12,8 +12,8 @@ import {
 	FaRegularCircleQuestion,
 	FaSolidCircleCheck,
 } from "solid-icons/fa";
-import SourceTooltip from "./atoms/SourceTooltip";
 import SeasonDisplay from "./SeasonDisplay";
+import SourceTooltip from "./atoms/SourceTooltip";
 
 interface Props {
 	bundleName: BundleName;
@@ -32,7 +32,8 @@ export default function BundleItem(props: Props) {
 
 	const itemDetails = () => ITEMS[itemId()];
 
-	const isStored = () => isItemStored(props.bundleName, itemStoreId());
+	const isStored = () =>
+		bundleStore[0][props.bundleName]?.includes(itemStoreId());
 
 	const showTooltip = (show = false) => {
 		if (tooltipRef) tooltipRef.style.display = show ? "block" : "none";
