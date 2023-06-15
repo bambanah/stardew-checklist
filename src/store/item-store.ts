@@ -14,7 +14,7 @@ export type StoredItem = {
 export const storedItems = persistentMap<{
 	[key in BundleName]?: string[];
 }>(
-	"storedItems_",
+	"storedItems:",
 	{},
 	{
 		encode: JSON.stringify,

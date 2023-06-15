@@ -1,9 +1,11 @@
 import { getBundlesInRoom, isRoomComplete } from "@/store/item-store";
+import { settingsStore, toggleRoomCollapsed } from "@/store/settings-store";
 import type { Room, RoomName } from "@/types";
+import { useStore } from "@nanostores/solid";
 import classNames from "classnames";
 import { BiSolidBadgeCheck } from "solid-icons/bi";
 import { FaSolidChevronDown } from "solid-icons/fa";
-import { For, createSignal } from "solid-js";
+import { For } from "solid-js";
 import Bundle from "./Bundle";
 import Display from "./atoms/Display";
 
@@ -12,7 +14,10 @@ interface Props {
 }
 
 export default function RoomSection(props: Props) {
-	const [isCollapsed, setIsCollapsed] = createSignal(false);
+	const $settingsStore = useStore(settingsStore);
+
+	const isCollapsed = () =>
+		$settingsStore().collapsedRooms.includes(props.room.id);
 
 	return (
 		<div
@@ -20,7 +25,7 @@ export default function RoomSection(props: Props) {
 		>
 			<button
 				class="mx-auto flex w-full max-w-lg items-center gap-2 lg:max-w-4xl"
-				onClick={() => setIsCollapsed(!isCollapsed())}
+				onClick={() => toggleRoomCollapsed(props.room.id)}
 			>
 				<FaSolidChevronDown
 					size="24"
