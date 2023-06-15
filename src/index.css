@@ -6,33 +6,44 @@ html,
 body {
 	@apply m-0 p-0;
 	@apply bg-stardew-background bg-fixed;
-	@apply fill-slate-500 text-slate-700;
-	@apply dark:bg-slate-900 dark:fill-slate-200 dark:text-slate-200;
+	@apply fill-zinc-700 text-zinc-700;
 }
 
-.stardew-border {
-	border: 10px solid transparent;
-	border-image: url("/images/menu_border.png") 33% stretch;
-	border-radius: 10px;
-}
+@layer components {
+	.border-menu {
+		border: 10px solid transparent;
+		border-image: url("/images/menu_border.png") 33% stretch;
+		border-radius: 10px;
+	}
 
-.tooltip-border {
-	border: 3px solid transparent;
-	border-image: url("/images/item_frame_full.png") 33% stretch;
-	border-radius: 3px;
-}
+	.item-container-empty {
+		border: 3px solid transparent;
+		border-image: url("/images/item_frame_empty.png") 33% stretch;
+		border-radius: 3px;
+	}
 
-@font-face {
-	font-family: "Stardew";
-	src: url("/fonts/stardew-valley.woff") format("woff");
-	font-weight: 600;
-	font-style: normal;
-}
+	.item-container-full {
+		border: 3px solid transparent;
+		border-image: url("/images/item_frame_full.png") 33% stretch;
+		border-radius: 3px;
+	}
 
-@font-face {
-	font-family: "Stardew";
-	src: url("/fonts/svbold-webfont.woff2") format("woff2"),
-		url("/fonts/svbold-webfont.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
+	.tooltip {
+		@apply item-container-full bg-amber-100 font-stardew font-bold;
+	}
+
+	@font-face {
+		font-family: "Stardew";
+		src: url("/fonts/stardew-valley.woff") format("woff");
+		font-weight: 600;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Stardew";
+		src: url("/fonts/svbold-webfont.woff2") format("woff2"),
+			url("/fonts/svbold-webfont.woff") format("woff");
+		font-weight: 700;
+		font-style: normal;
+	}
 }

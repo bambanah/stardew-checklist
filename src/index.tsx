@@ -9,8 +9,7 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 	);
 }
 
-import { Route, Router, Routes } from "@solidjs/router";
-import { lazy } from "solid-js";
+import Home from "@/pages/Home";
 
 import "./index.css";
 
@@ -20,16 +19,8 @@ import "@fontsource/inter/latin-500.css";
 import "@fontsource/inter/latin-600.css";
 import "@fontsource/patua-one/latin-400.css";
 
-const Home = lazy(() => import("@/pages/Home"));
-
 render(
-	() => (
-		<Router>
-			<Routes>
-				<Route path="/" component={Home} />
-			</Routes>
-		</Router>
-	),
+	() => <Home />,
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	root!
 );

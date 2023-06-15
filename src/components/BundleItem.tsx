@@ -47,7 +47,7 @@ export default function BundleItem(props: Props) {
 						: storeItem(props.bundleName, itemStoreId())
 				}
 				class={classNames([
-					"relative flex w-full items-center justify-between gap-2 rounded border border-amber-200 p-2 transition-[color,fill] duration-75 hover:bg-amber-200 dark:border-slate-500 dark:hover:bg-slate-600 md:p-1",
+					"relative flex w-full items-center justify-between gap-2 rounded border border-amber-200 p-2 transition-[color,fill] duration-75 hover:bg-amber-200 md:p-1",
 
 					(isBundleComplete(props.bundleName) || isStored()) &&
 						"fill-zinc-500 text-zinc-500",
@@ -55,7 +55,7 @@ export default function BundleItem(props: Props) {
 			>
 				<div class="flex flex-grow items-center gap-2">
 					{isStored() ? (
-						<FaSolidCircleCheck class="fill-green-700 dark:fill-green-400" />
+						<FaSolidCircleCheck class="fill-green-700" />
 					) : (
 						<FaRegularCircle />
 					)}
@@ -77,6 +77,8 @@ export default function BundleItem(props: Props) {
 						<FaRegularCircleQuestion
 							onMouseEnter={() => showTooltip(true)}
 							onMouseLeave={() => showTooltip(false)}
+							onFocusIn={() => showTooltip(true)}
+							onFocusOut={() => showTooltip(false)}
 						/>
 						<SourceTooltip ref={tooltipRef} source={itemDetails().source} />
 					</>

@@ -10,7 +10,10 @@ const Layout = (props: Props) => {
 	return (
 		<>
 			<div class="mx-auto py-8 text-center">
-				<Display size="xl" class="text-slate-100">
+				<Display
+					size="xl"
+					class="text-slate-100 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]"
+				>
 					Bundle Checklist
 				</Display>
 			</div>

@@ -9,7 +9,7 @@ const SourceTooltip = (props: Props) => {
 	return (
 		<div
 			ref={props.ref}
-			class="tooltip-border max-w-screen absolute right-0 top-10 z-10 box-border hidden whitespace-pre-line rounded border bg-amber-200 p-2 text-left font-stardew font-bold text-zinc-800 shadow-xl"
+			class="tooltip max-w-screen absolute right-0 top-10 z-10 box-border hidden whitespace-pre-line rounded p-2 text-left text-zinc-800 shadow-xl"
 		>
 			{props.source.split(";").length > 1 ? (
 				<ul class="list-inside list-disc">

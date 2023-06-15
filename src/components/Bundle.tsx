@@ -6,6 +6,7 @@ import { For } from "solid-js";
 import BundleItem from "./BundleItem";
 import ProgressBar from "./atoms/ProgressBar";
 import Display from "./atoms/Display";
+import classNames from "classnames";
 
 interface Props {
 	bundle: Bundle & { id: BundleName };
@@ -18,7 +19,14 @@ export default function Bundle(props: Props) {
 		$storedItems()[props.bundle.id]?.length ?? 0;
 
 	return (
-		<div class="flex w-full break-inside-avoid-column flex-col gap-1 rounded border-2 border-amber-400 bg-stardew-yellow-600 p-2 pt-1 shadow-lg sm:w-[16rem]">
+		<div
+			class={classNames([
+				"flex w-full break-inside-avoid-column flex-col gap-1 border-2 p-2 pt-1 transition-[border,background-color,box-shadow]  sm:w-[16rem]",
+				isBundleComplete(props.bundle.id)
+					? "border-amber-200 bg-none shadow-none"
+					: "border-amber-400 bg-stardew-yellow-600 shadow-lg",
+			])}
+		>
 			<p class="flex items-center justify-between">
 				<Display size="xs">
 					{props.bundle.name.replace(" Bundle", "")} (
