@@ -10,16 +10,14 @@ const ProgressBar = (props: Props) => {
 	return (
 		<div
 			class={classNames([
-				"h-1 w-full overflow-hidden bg-slate-200 dark:bg-slate-500",
+				"h-2 w-full overflow-hidden bg-slate-200",
 				props.class,
 			])}
 		>
 			<div
 				class={classNames([
 					"h-full transition-all",
-					props.value >= props.max
-						? "bg-green-500 dark:bg-green-400"
-						: "bg-pink-500",
+					props.value >= props.max ? "bg-green-500" : "bg-blue-500",
 				])}
 				style={{
 					width: `${(props.value / props.max) * 100}%`,

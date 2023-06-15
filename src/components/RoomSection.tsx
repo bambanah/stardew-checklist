@@ -17,7 +17,7 @@ export default function RoomSection(props: Props) {
 	return (
 		<div
 			class={classNames([
-				"stardew-border flex flex-col bg-stardew-yellow-500 md:px-4 md:py-2",
+				"stardew-border flex flex-col bg-amber-50 p-2 md:p-4",
 			])}
 		>
 			<button
@@ -41,7 +41,7 @@ export default function RoomSection(props: Props) {
 			</button>
 			<div
 				class={classNames([
-					"box-border flex flex-wrap items-start justify-center gap-2 overflow-hidden transition-[max-height,padding,opacity] md:gap-y-10",
+					"box-border flex flex-wrap items-start justify-center gap-4 overflow-hidden transition-[max-height,padding,opacity] md:gap-y-10",
 					isCollapsed()
 						? "max-h-0 p-0 opacity-0"
 						: "max-h-[1000rem] pt-4 opacity-100",

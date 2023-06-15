@@ -7,7 +7,7 @@ import { RoomName } from "@/types";
 export default function Home() {
 	return (
 		<Layout>
-			<div class="flex flex-col gap-2 md:gap-4">
+			<div class="flex flex-col gap-4 md:gap-4">
 				<For each={Object.entries(ROOMS)}>
 					{([id, room]) => (
 						<RoomSection room={{ ...room, id: id as RoomName }} />

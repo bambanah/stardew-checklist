@@ -61,7 +61,7 @@ export default function BundleItem(props: Props) {
 					)}
 					<span
 						class={classNames([
-							"text-left font-stardew text-xl",
+							"text-left font-stardew font-bold",
 							isStored() && "line-through",
 						])}
 					>
