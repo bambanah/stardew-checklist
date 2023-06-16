@@ -3,19 +3,17 @@ import * as client from "https";
 import { ITEMS } from "../src/constants/items";
 import { Item } from "../src/types";
 
-const getDownloadUrlBaseUrl =
-	"https://stardewcommunitywiki.com/mediawiki/api.php?action=query&prop=imageinfo&iiprop=url&format=json&titles=File:";
-
 interface ImageInfoResponse {
 	query: {
 		pages: { imageinfo: { url: string }[] }[];
 	};
 }
-
 const downloadImage = async (localPath: string): Promise<string | void> => {
 	const imageName = localPath.split("/").slice(-1);
 
-	const downloadUrl = await fetch(getDownloadUrlBaseUrl + imageName)
+	const downloadUrl = await fetch(
+		`https://stardewcommunitywiki.com/mediawiki/api.php?action=query&prop=imageinfo&iiprop=url&format=json&titles=File:${imageName}`
+	)
 		.then((res) => res.json())
 		.then((res: ImageInfoResponse) => {
 			return Object.values(res["query"]["pages"])[0]["imageinfo"][0]["url"];
@@ -37,7 +35,6 @@ const downloadImage = async (localPath: string): Promise<string | void> => {
 						resolve(localPath);
 					});
 			} else {
-				// Consume response data to free up memory
 				res.resume();
 				reject(
 					new Error(`Request Failed With a Status Code: ${res.statusCode}`)
@@ -47,22 +44,18 @@ const downloadImage = async (localPath: string): Promise<string | void> => {
 	});
 };
 
-const requiredImages = Object.values(ITEMS).map(
-	(item: Item) => item.iconPath ?? item.name.replaceAll(" ", "_")
-);
-
-const missingImages = requiredImages
+const missingImages = Object.values(ITEMS)
+	.map((item: Item) => item.iconPath ?? item.name.replaceAll(" ", "_"))
 	.map(
-		(img) => `public/images${img.startsWith("/") ? img : `/items/${img}.png`}`
+		(imageName) =>
+			`public/images${
+				imageName.startsWith("/") ? imageName : `/items/${imageName}.png`
+			}`
 	)
-	.filter((path) => {
-		return !fs.existsSync(path);
+	.filter((imagePath) => {
+		return !fs.existsSync(imagePath);
 	});
-
-const downloadedImages: string[] = [];
 
 for (const image of missingImages) {
-	downloadImage(image).then((downloadedImage) => {
-		if (downloadedImage) downloadedImages.push(downloadedImage);
-	});
+	downloadImage(image);
 }
