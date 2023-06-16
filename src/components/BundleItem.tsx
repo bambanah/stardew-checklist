@@ -5,7 +5,7 @@ import {
 	storeItem,
 	unstoreItem,
 } from "@/store/item-store";
-import type { BundleItem, BundleName } from "@/types";
+import type { BundleItem, BundleName, Item } from "@/types";
 import classNames from "classnames";
 import {
 	FaRegularCircle,
@@ -14,6 +14,7 @@ import {
 } from "solid-icons/fa";
 import SeasonDisplay from "./SeasonDisplay";
 import SourceTooltip from "./atoms/SourceTooltip";
+import ItemIcon from "./ItemIcon";
 
 interface Props {
 	bundleName: BundleName;
@@ -30,7 +31,7 @@ export default function BundleItem(props: Props) {
 	const quantity = () =>
 		typeof props.item === "string" ? 1 : props.item.quantity ?? 1;
 
-	const itemDetails = () => ITEMS[itemId()];
+	const itemDetails = () => ITEMS[itemId()] as Item;
 
 	const isStored = () =>
 		bundleStore[0][props.bundleName]?.includes(itemStoreId());
@@ -60,6 +61,10 @@ export default function BundleItem(props: Props) {
 					) : (
 						<FaRegularCircle />
 					)}
+					<ItemIcon
+						itemName={itemDetails().name}
+						iconPath={itemDetails().iconPath}
+					/>
 					<span
 						class={classNames([
 							"text-left font-stardew font-bold",

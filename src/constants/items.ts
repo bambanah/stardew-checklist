@@ -284,6 +284,7 @@ export const ITEMS = {
 		seasons: [],
 		skills: ["farming"],
 		source: "Cows, Goats",
+		iconPath: "Milk",
 	},
 	large_milk: {
 		name: "Large Milk",
@@ -302,18 +303,21 @@ export const ITEMS = {
 		seasons: [],
 		skills: ["farming"],
 		source: "Drop from Chickens",
+		iconPath: "Egg",
 	},
 	large_egg_brown: {
 		name: "Large Egg (Brown)",
 		seasons: [],
 		skills: ["farming"],
 		source: "Drop from Brown Chickens",
+		iconPath: "Large_Brown_Egg",
 	},
 	large_egg_white: {
 		name: "Large Egg (White)",
 		seasons: [],
 		skills: ["farming"],
 		source: "Drop from White Chickens",
+		iconPath: "Large_Egg",
 	},
 	dinosaur_mayonnaise: {
 		name: "Dinosaur Mayonnaise",
@@ -987,23 +991,27 @@ export const ITEMS = {
 		seasons: [],
 		skills: ["farming", "mining", "foraging", "fishing", "combat"],
 		source: "",
+		iconPath: "/bundles/2500.png",
 	},
 	"5000_gold": {
 		name: "5,000 Gold",
 		seasons: [],
 		skills: ["farming", "mining", "foraging", "fishing", "combat"],
 		source: "",
+		iconPath: "/bundles/5000.png",
 	},
 	"10000_gold": {
 		name: "10,000 Gold",
 		seasons: [],
 		skills: ["farming", "mining", "foraging", "fishing", "combat"],
 		source: "",
+		iconPath: "/bundles/10000.png",
 	},
 	"25000_gold": {
 		name: "25,000 Gold",
 		seasons: [],
 		skills: ["farming", "mining", "foraging", "fishing", "combat"],
 		source: "",
+		iconPath: "/bundles/25000.png",
 	},
 } as const satisfies { [key: string]: Item };
