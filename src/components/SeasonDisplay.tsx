@@ -1,6 +1,6 @@
-import { For } from "solid-js";
 import { Season } from "@/types";
-import SeasonIcon from "./atoms/SeasonIcon";
+import { For, lazy } from "solid-js";
+const SeasonIcon = lazy(() => import("./atoms/SeasonIcon"));
 
 interface Props {
 	seasons: readonly Season[];
