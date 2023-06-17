@@ -8,6 +8,12 @@ dependencies:
   "@fontsource/inter":
     specifier: ^5.0.3
     version: 5.0.3
+  "@fontsource/patua-one":
+    specifier: ^5.0.3
+    version: 5.0.3
+  "@fontsource/share-tech-mono":
+    specifier: ^5.0.3
+    version: 5.0.3
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
@@ -1082,6 +1088,20 @@ packages:
     resolution:
       {
         integrity: sha512-JJvh5xht71F6e0E5r2+Ffu8g+CYAxMvnGJm9ZMg5IIjy8UwxLp+8C99TgPJupdEyBpEJv0wuMG2Rd183z/bV8g==,
+      }
+    dev: false
+
+  /@fontsource/patua-one@5.0.3:
+    resolution:
+      {
+        integrity: sha512-/we274Hx75OJIMx9/h9yycebjgJu0L9XZODLnZtiGEuJrQ+Dsb0279xcjLOHVGde35vLqkzhUbA36/u8lEhVeQ==,
+      }
+    dev: false
+
+  /@fontsource/share-tech-mono@5.0.3:
+    resolution:
+      {
+        integrity: sha512-kPSDipcNkONdrw3e0fS142dni5SN1ow9TSKGUs3lrdq5NcjJrVPhruofRFW++LisU8qTo/ZRwZRZcZhTADKr3w==,
       }
     dev: false
 

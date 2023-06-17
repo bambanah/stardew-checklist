@@ -7,14 +7,8 @@ import {
 } from "@/store/item-store";
 import type { BundleItem, BundleName, Item } from "@/types";
 import classNames from "classnames";
-import {
-	FaRegularCircle,
-	FaRegularCircleQuestion,
-	FaSolidCircleCheck,
-} from "solid-icons/fa";
-import SeasonDisplay from "./SeasonDisplay";
+import ItemBadge from "./ItemBadge";
 import SourceTooltip from "./atoms/SourceTooltip";
-import ItemIcon from "./ItemIcon";
 
 interface Props {
 	bundleName: BundleName;
@@ -30,14 +24,28 @@ export default function BundleItem(props: Props) {
 		typeof props.item === "string" ? props.item : props.item.id ?? itemId();
 	const quantity = () =>
 		typeof props.item === "string" ? 1 : props.item.quantity ?? 1;
+	const quality = () =>
+		typeof props.item === "string"
+			? "regular"
+			: props.item.quality ?? "regular";
 
 	const itemDetails = () => ITEMS[itemId()] as Item;
 
 	const isStored = () =>
 		bundleStore[0][props.bundleName]?.includes(itemStoreId());
 
-	const showTooltip = (show = false) => {
-		if (tooltipRef) tooltipRef.style.display = show ? "block" : "none";
+	const showTooltip = (e: MouseEvent) => {
+		e.preventDefault();
+
+		if (tooltipRef && e.type === "mousemove") {
+			const gap = 15;
+
+			tooltipRef.style.display = "block";
+			tooltipRef.style.top = e.pageY + gap + "px";
+			tooltipRef.style.left = e.pageX + gap + "px";
+		} else if (tooltipRef && e.type === "mouseleave") {
+			tooltipRef.style.display = "none";
+		}
 	};
 
 	return (
@@ -49,46 +57,24 @@ export default function BundleItem(props: Props) {
 						: storeItem(props.bundleName, itemStoreId())
 				}
 				class={classNames([
-					"relative flex w-full items-center justify-between gap-2 rounded border border-amber-200 p-2 transition-[color,fill] duration-75 hover:bg-amber-200 md:p-1",
-
+					"group flex items-center justify-between gap-2 rounded p-2 transition-[color,fill] duration-75 md:p-1",
 					(isBundleComplete(props.bundleName) || isStored()) &&
 						"fill-zinc-500 text-zinc-500",
 				])}
+				onMouseMove={(e) => showTooltip(e)}
+				onMouseLeave={(e) => showTooltip(e)}
 			>
-				<div class="flex flex-grow items-center gap-2">
-					{isStored() ? (
-						<FaSolidCircleCheck class="fill-green-700" />
-					) : (
-						<FaRegularCircle />
-					)}
-					<ItemIcon
-						itemName={itemDetails().name}
-						iconPath={itemDetails().iconPath}
-					/>
-					<span
-						class={classNames([
-							"text-left font-stardew font-bold",
-							isStored() && "line-through",
-						])}
-					>
-						{itemDetails().name} {quantity() > 1 && `(${quantity()})`}
-					</span>
-				</div>
+				<ItemBadge
+					class={classNames([" "])}
+					itemName={itemDetails().name}
+					iconPath={itemDetails().iconPath}
+					quantity={quantity()}
+					quality={quality()}
+					itemStored={isStored()}
+					bundleComplete={isBundleComplete(props.bundleName)}
+				/>
 
-				{![0, 4].includes(itemDetails().seasons.length) && (
-					<SeasonDisplay seasons={itemDetails().seasons} />
-				)}
-				{itemDetails().source && (
-					<>
-						<FaRegularCircleQuestion
-							onMouseEnter={() => showTooltip(true)}
-							onMouseLeave={() => showTooltip(false)}
-							onFocusIn={() => showTooltip(true)}
-							onFocusOut={() => showTooltip(false)}
-						/>
-						<SourceTooltip ref={tooltipRef} source={itemDetails().source} />
-					</>
-				)}
+				<SourceTooltip ref={tooltipRef} source={itemDetails().source} />
 			</button>
 		</>
 	);

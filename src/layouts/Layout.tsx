@@ -17,7 +17,7 @@ const Layout = (props: Props) => {
 					Bundle Checklist
 				</Display>
 			</div>
-			<main class="mx-auto w-full max-w-4xl pb-4 sm:p-4">{props.children}</main>
+			<main class="mx-auto w-full max-w-7xl pb-4 sm:p-4">{props.children}</main>
 		</>
 	);
 };

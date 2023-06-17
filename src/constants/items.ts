@@ -306,14 +306,14 @@ export const ITEMS = {
 		iconPath: "Egg",
 	},
 	large_egg_brown: {
-		name: "Large Egg (Brown)",
+		name: "Large Brown Egg",
 		seasons: [],
 		skills: ["farming"],
 		source: "Drop from Brown Chickens",
 		iconPath: "Large_Brown_Egg",
 	},
 	large_egg_white: {
-		name: "Large Egg (White)",
+		name: "Large White Egg",
 		seasons: [],
 		skills: ["farming"],
 		source: "Drop from White Chickens",

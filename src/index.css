@@ -10,25 +10,42 @@ body {
 
 @layer components {
 	.border-menu {
-		border: 10px solid transparent;
-		border-image: url("/images/menu_border.png") 33% stretch;
-		border-radius: 10px;
+		border-width: 15px 12px 12px 12px;
+		border-image: url("/images/menu_border.png");
+		border-image-slice: 15 12 12 12;
+		border-radius: 14px;
 	}
 
 	.item-container-empty {
-		border: 3px solid transparent;
-		border-image: url("/images/item_frame_empty.png") 33% stretch;
-		border-radius: 3px;
+		border-image: url("/images/item_frame_empty.png");
+		border-width: 5px 5px 4px 4px;
+		border-image-slice: 5 5 4 4 fill;
 	}
 
 	.item-container-full {
-		border: 3px solid transparent;
-		border-image: url("/images/item_frame_full.png") 33% stretch;
-		border-radius: 3px;
+		border-image: url("/images/item_frame_full.png");
+		border-width: 5px 5px 4px 4px;
+		border-image-slice: 5 5 4 4 fill;
+	}
+
+	.bundle-name-background {
+		border-image: url("/images/bundle-name-background.png");
+		border-width: 4px 4px 6px 6px;
+		border-image-slice: 4 4 6 6 fill;
+	}
+
+	.bundle-items-container {
+		border-image: url("/images/bundle-items-background.png");
+		border-width: 7px;
+		border-image-slice: 7 fill;
+	}
+
+	.bundle-background {
+		background-image: url("/images/bundle-background.png");
 	}
 
 	.tooltip {
-		@apply item-container-full bg-amber-100 font-stardew font-bold;
+		@apply border-menu rounded-lg bg-amber-100 font-stardew font-bold;
 	}
 
 	@font-face {

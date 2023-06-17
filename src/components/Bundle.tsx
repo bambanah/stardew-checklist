@@ -1,11 +1,12 @@
-import { isBundleComplete, bundleStore } from "@/store/item-store";
+import { bundleStore, isBundleComplete } from "@/store/item-store";
 import type { Bundle, BundleName } from "@/types";
+import classNames from "classnames";
 import { FaSolidCircleCheck } from "solid-icons/fa";
 import { For } from "solid-js";
 import BundleItem from "./BundleItem";
-import ProgressBar from "./atoms/ProgressBar";
 import Display from "./atoms/Display";
-import classNames from "classnames";
+import ProgressBar from "./atoms/ProgressBar";
+import BundleNameContainer from "./atoms/BundleNameContainer";
 
 interface Props {
 	bundle: Bundle & { id: BundleName };
@@ -19,14 +20,12 @@ export default function Bundle(props: Props) {
 	return (
 		<div
 			class={classNames([
-				"flex w-full break-inside-avoid-column flex-col gap-1 border-2 p-2 pt-1 transition-[border,background-color,box-shadow]  sm:w-[16rem]",
-				isBundleComplete(props.bundle.id)
-					? "border-amber-200 bg-none shadow-none"
-					: "border-amber-400 bg-stardew-yellow-600 shadow-lg",
+				"bundle-items-container p box-content flex w-full flex-col gap-2 pt-1 transition-[border,background-color,box-shadow] sm:w-[23rem]",
+				isBundleComplete(props.bundle.id) ? "shadow-none" : "shadow-lg",
 			])}
 		>
-			<p class="flex items-center justify-between">
-				<Display size="xs">
+			<BundleNameContainer>
+				<Display size="sm">
 					{props.bundle.name.replace(" Bundle", "")} (
 					{itemsStoredInBundle().toString()}/
 					{props.bundle.items_required.toString()})
@@ -37,15 +36,21 @@ export default function Bundle(props: Props) {
 						class="fill-green-700 dark:fill-green-400"
 					/>
 				)}
-			</p>
+			</BundleNameContainer>
+
 			<ProgressBar
-				class="rounded"
+				class={classNames([
+					"rounded",
+					isBundleComplete(props.bundle.id) && "opacity-0",
+				])}
 				value={itemsStoredInBundle()}
 				max={props.bundle.items_required}
 			/>
-			<For each={props.bundle.items}>
-				{(item) => <BundleItem item={item} bundleName={props.bundle.id} />}
-			</For>
+			<div class="flex flex-wrap gap-1">
+				<For each={props.bundle.items}>
+					{(item) => <BundleItem item={item} bundleName={props.bundle.id} />}
+				</For>
+			</div>
 		</div>
 	);
 }
