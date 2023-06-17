@@ -38,15 +38,19 @@ export default function Bundle(props: Props) {
 				)}
 			</BundleNameContainer>
 
-			<ProgressBar
+			<div
 				class={classNames([
-					"rounded",
-					isBundleComplete(props.bundle.id) ? "opacity-0 delay-150" : "delay-0",
-					itemsStoredInBundle() === 0 && "opacity-0",
+					"transition-[max-height,opacity]",
+					isBundleComplete(props.bundle.id)
+						? "max-h-0 opacity-0"
+						: "max-h-[2rem]",
 				])}
-				value={itemsStoredInBundle()}
-				max={props.bundle.items_required}
-			/>
+			>
+				<ProgressBar
+					value={itemsStoredInBundle()}
+					max={props.bundle.items_required}
+				/>
+			</div>
 			<div class="flex flex-wrap gap-1">
 				<For each={props.bundle.items}>
 					{(item) => <BundleItem item={item} bundleName={props.bundle.id} />}
