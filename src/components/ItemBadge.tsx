@@ -50,14 +50,14 @@ const ItemBadge = (props: Props) => {
 				)}
 				{props.itemStored && (
 					<img
-						class="absolute top-1 m-auto w-[50px] opacity-40"
+						class="absolute top-0 z-10 m-auto w-[48px] opacity-40"
 						src={`/images/cross.png`}
 					/>
 				)}
 				{props.quantity && props.quantity > 1 && (
 					<span
 						class={classNames([
-							"absolute -bottom-2 left-1 flex h-[48px] w-[48px] items-end justify-end font-mono text-2xl font-bold text-zinc-100",
+							"absolute -bottom-[6px] left-0 flex h-full w-full items-end justify-end font-mono text-2xl font-bold text-zinc-100",
 							shouldFade() && "saturate-50",
 						])}
 						style={{
