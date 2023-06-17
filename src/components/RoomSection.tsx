@@ -24,7 +24,7 @@ export default function RoomSection(props: Props) {
 			])}
 		>
 			<button
-				class="mx-auto flex w-full max-w-lg items-center gap-2 lg:max-w-4xl"
+				class="mx-auto flex w-full items-center gap-2"
 				onClick={() => toggleRoomCollapsed(props.room.id)}
 			>
 				<FaSolidChevronDown
