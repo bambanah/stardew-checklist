@@ -29,7 +29,7 @@ const ItemBadge = (props: Props) => {
 			<div
 				class={classNames([
 					"relative h-[57px] w-[57px] transition-colors",
-					props.itemStored ? "item-container-empty" : "item-container-full",
+					shouldFade() ? "item-container-empty" : "item-container-full",
 					props.class,
 				])}
 			>
