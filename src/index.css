@@ -57,13 +57,18 @@ body {
 		@apply bg-[#fadc97];
 	}
 
-	.tooltip-background {
+	.border-tooltip {
 		border-image: url("/images/tooltip-background.png");
 		border-width: 8px 8px 6px 6px;
 		border-image-slice: 4 4 3 3 fill;
-		border-radius: 8px;
+		border-radius: 10px;
 
 		@apply border-[#dc7b05] bg-[#fdbc6e];
+	}
+
+	.border-progress {
+		@apply border-tooltip;
+		border-image-slice: 3 4 3 3 fill;
 	}
 
 	@font-face {

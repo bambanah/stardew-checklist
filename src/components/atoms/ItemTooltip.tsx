@@ -12,7 +12,7 @@ const ItemTooltip = (props: Props) => {
 	return (
 		<div
 			ref={props.ref}
-			class="tooltip-background absolute right-0 top-10 z-50 box-border hidden max-w-[15rem] flex-col gap-2 whitespace-pre-line p-1 text-left font-display font-light text-zinc-800 shadow-xl"
+			class="border-tooltip absolute top-10 z-50 box-border hidden min-w-[8rem] max-w-[18rem] flex-col gap-2 whitespace-pre-line p-1 pt-0 text-left font-display font-light text-zinc-800 shadow-xl"
 		>
 			<h2 class="text-lg font-semibold">{props.item.name}</h2>
 
