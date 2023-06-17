@@ -44,8 +44,14 @@ body {
 		background-image: url("/images/bundle-background.png");
 	}
 
+	.tooltip-background {
+		border-image: url("/images/tooltip-background.png");
+		border-width: 8px 8px 6px 6px;
+		border-image-slice: 16 16 12 12 fill;
+	}
+
 	.tooltip {
-		@apply border-menu rounded-lg bg-amber-100 font-stardew font-bold;
+		@apply tooltip-background rounded-xl font-display font-light;
 	}
 
 	@font-face {
