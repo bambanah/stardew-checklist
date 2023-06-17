@@ -6,19 +6,21 @@ interface Props {
 }
 
 const SourceTooltip = (props: Props) => {
+	const sources = () => props.source.split(";");
+
 	return (
 		<div
 			ref={props.ref}
-			class="tooltip max-w-screen absolute right-0 top-10 z-10 box-border hidden whitespace-pre-line rounded p-2 text-left text-zinc-800 shadow-xl"
+			class="tooltip absolute right-0 top-10 z-50 box-border hidden max-w-[15rem] whitespace-pre-line rounded p-1 text-left text-zinc-800 shadow-xl"
 		>
-			{props.source.split(";").length > 1 ? (
+			<p>Source{sources().length > 1 && "s"}:</p>
+
+			{sources().length > 1 ? (
 				<ul class="list-inside list-disc">
-					<For each={props.source.split(";")}>
-						{(ln) => <li>{ln.trim()}</li>}
-					</For>
+					<For each={sources()}>{(ln) => <li>{ln.trim()}</li>}</For>
 				</ul>
 			) : (
-				<p>{props.source}</p>
+				<p>{sources()[0]}</p>
 			)}
 		</div>
 	);

@@ -34,6 +34,7 @@ export type Item = {
 	seasons: readonly Season[];
 	skills: readonly Skill[];
 	source: string;
+	iconPath?: string;
 };
 
 type RoomBundles = readonly (BundleName | readonly BundleName[])[];

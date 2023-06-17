@@ -12,9 +12,15 @@
 		"paths": {
 			"@/*": ["src/*"]
 		},
-		"types": ["vite/client"],
+		"types": ["vite/client", "node"],
 		"noEmit": true,
 		"isolatedModules": true,
 		"pretty": true
+	},
+	"ts-node": {
+		// Required for fetch-missing-images script to work (TODO: Investigate why)
+		"compilerOptions": {
+			"module": "commonjs"
+		}
 	}
 }

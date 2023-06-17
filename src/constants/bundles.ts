@@ -423,7 +423,7 @@ export const BUNDLES = {
 		items_required: 1,
 	},
 	"5000": {
-		name: "5,500 Bundle",
+		name: "5,000 Bundle",
 		reward: "Quality Fertilizer (30)",
 		items: ["5000_gold"],
 		items_required: 1,
