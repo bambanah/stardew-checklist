@@ -278,7 +278,7 @@ export const BUNDLES = {
 		items_required: 4,
 	},
 	adventurers: {
-		name: "Adventurers's Bundle",
+		name: "Adventurer's Bundle",
 		reward: "Small Magnet Ring",
 		items: [
 			{ item: "slime", quantity: 99 },
