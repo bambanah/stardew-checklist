@@ -4,54 +4,66 @@
 
 body {
 	@apply m-0 p-0;
-	@apply bg-stardew-background bg-cover bg-fixed;
+	@apply bg-stardew-background bg-cover bg-fixed rendering-pixelated;
 	@apply fill-zinc-700 text-zinc-700;
 }
 
 @layer components {
 	.border-menu {
-		border-width: 15px 12px 12px 12px;
+		border-width: 10px 8px 8px 8px;
 		border-image: url("/images/menu_border.png");
-		border-image-slice: 15 12 12 12;
-		border-radius: 14px;
+		border-image-slice: 5 4 4 4;
+		border-radius: 10px;
+
+		@apply border-[#fa9305];
 	}
 
 	.item-container-empty {
 		border-image: url("/images/item_frame_empty.png");
 		border-width: 5px 5px 4px 4px;
 		border-image-slice: 5 5 4 4 fill;
+
+		@apply border-[#b95f30] bg-[#f3b644];
 	}
 
 	.item-container-full {
 		border-image: url("/images/item_frame_full.png");
 		border-width: 5px 5px 4px 4px;
 		border-image-slice: 5 5 4 4 fill;
+
+		@apply border-[#911c09] bg-[#e67539];
 	}
 
 	.bundle-name-background {
 		border-image: url("/images/bundle-name-background.png");
 		border-width: 4px 4px 6px 6px;
-		border-image-slice: 4 4 6 6 fill;
+		border-image-slice: 2 2 3 3 fill;
+
+		@apply border-[#bc6131] bg-[#ffdc8e];
 	}
 
 	.bundle-items-container {
 		border-image: url("/images/bundle-items-background.png");
 		border-width: 7px;
 		border-image-slice: 7 fill;
+		border-radius: 7px;
+
+		@apply border-[#f4b744] bg-[#fab05a];
 	}
 
 	.bundle-background {
 		background-image: url("/images/bundle-background.png");
+
+		@apply bg-[#fadc97];
 	}
 
 	.tooltip-background {
 		border-image: url("/images/tooltip-background.png");
 		border-width: 8px 8px 6px 6px;
-		border-image-slice: 16 16 12 12 fill;
-	}
+		border-image-slice: 4 4 3 3 fill;
+		border-radius: 8px;
 
-	.tooltip {
-		@apply tooltip-background rounded-xl font-display font-light;
+		@apply border-[#dc7b05] bg-[#fdbc6e];
 	}
 
 	@font-face {
