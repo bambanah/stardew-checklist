@@ -1,5 +1,7 @@
 import { Quality } from "@/types";
 import classNames from "classnames";
+import { lazy } from "solid-js";
+const ItemIcon = lazy(() => import("./atoms/ItemIcon"));
 
 interface Props {
 	itemName: string;
@@ -26,21 +28,15 @@ const ItemBadge = (props: Props) => {
 		<div class="flex w-20 flex-col items-center">
 			<div
 				class={classNames([
-					"relative transition-colors",
-					props.itemStored
-						? "item-container-empty border-opacity-50 group-hover:bg-stardew-yellow-600"
-						: "item-container-full group-hover:bg-amber-200",
+					"relative h-[57px] w-[57px] transition-colors",
+					props.itemStored ? "item-container-empty" : "item-container-full",
 					props.class,
 				])}
 			>
-				<img
-					src={url()}
-					class={classNames([
-						"relative left-0 top-0 w-[48px] drop-shadow-2xl transition-opacity",
-						shouldFade() && "opacity-50",
-					])}
-					aria-label={props.itemName}
-					title={props.itemName}
+				<ItemIcon
+					itemName={props.itemName}
+					imgSrc={url()}
+					shouldFade={shouldFade()}
 				/>
 				{props.quality && props.quality !== "regular" && (
 					<img
@@ -50,14 +46,14 @@ const ItemBadge = (props: Props) => {
 				)}
 				{props.itemStored && (
 					<img
-						class="absolute top-0 z-10 m-auto w-[48px] opacity-40"
+						class="absolute top-0 z-10 m-auto w-[48px] opacity-40 rendering-pixelated"
 						src={`/images/cross.png`}
 					/>
 				)}
 				{props.quantity && props.quantity > 1 && (
 					<span
 						class={classNames([
-							"absolute -bottom-[6px] left-0 flex h-full w-full items-end justify-end font-mono text-2xl font-bold text-zinc-100",
+							"absolute -bottom-[6px] left-0 flex h-full w-full items-end justify-end font-mono text-xl font-bold text-zinc-100",
 							shouldFade() && "saturate-50",
 						])}
 						style={{
