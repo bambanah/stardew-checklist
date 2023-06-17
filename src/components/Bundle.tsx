@@ -4,9 +4,9 @@ import classNames from "classnames";
 import { FaSolidCircleCheck } from "solid-icons/fa";
 import { For } from "solid-js";
 import BundleItem from "./BundleItem";
+import BundleNameContainer from "./atoms/BundleNameContainer";
 import Display from "./atoms/Display";
 import ProgressBar from "./atoms/ProgressBar";
-import BundleNameContainer from "./atoms/BundleNameContainer";
 
 interface Props {
 	bundle: Bundle & { id: BundleName };
@@ -20,7 +20,7 @@ export default function Bundle(props: Props) {
 	return (
 		<div
 			class={classNames([
-				"bundle-items-container p box-content flex w-full flex-col gap-2 pt-1 transition-[border,background-color,box-shadow] sm:w-[23rem]",
+				"bundle-items-container p box-content flex w-full flex-col gap-2 p-1 transition-[border,background-color,box-shadow] sm:w-[23rem]",
 				isBundleComplete(props.bundle.id) ? "shadow-none" : "shadow-lg",
 			])}
 		>

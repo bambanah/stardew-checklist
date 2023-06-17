@@ -7,8 +7,8 @@ import {
 } from "@/store/item-store";
 import type { BundleItem, BundleName, Item } from "@/types";
 import classNames from "classnames";
+import ItemTooltip from "./atoms/ItemTooltip";
 import ItemBadge from "./ItemBadge";
-import SourceTooltip from "./atoms/SourceTooltip";
 
 interface Props {
 	bundleName: BundleName;
@@ -40,7 +40,7 @@ export default function BundleItem(props: Props) {
 		if (tooltipRef && e.type === "mousemove") {
 			const gap = 15;
 
-			tooltipRef.style.display = "block";
+			tooltipRef.style.display = "flex";
 			tooltipRef.style.top = e.pageY + gap + "px";
 			tooltipRef.style.left = e.pageX + gap + "px";
 		} else if (tooltipRef && e.type === "mouseleave") {
@@ -74,7 +74,7 @@ export default function BundleItem(props: Props) {
 					bundleComplete={isBundleComplete(props.bundleName)}
 				/>
 
-				<SourceTooltip ref={tooltipRef} source={itemDetails().source} />
+				<ItemTooltip ref={tooltipRef} item={itemDetails()} />
 			</button>
 		</>
 	);
