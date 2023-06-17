@@ -41,7 +41,8 @@ export default function Bundle(props: Props) {
 			<ProgressBar
 				class={classNames([
 					"rounded",
-					isBundleComplete(props.bundle.id) && "opacity-0",
+					isBundleComplete(props.bundle.id) ? "opacity-0 delay-150" : "delay-0",
+					itemsStoredInBundle() === 0 && "opacity-0",
 				])}
 				value={itemsStoredInBundle()}
 				max={props.bundle.items_required}
