@@ -4,7 +4,7 @@
 
 body {
 	@apply m-0 p-0;
-	@apply bg-stardew-background bg-cover bg-fixed rendering-pixelated;
+	@apply bg-[#108afb] bg-stardew-background bg-cover bg-fixed rendering-pixelated;
 	@apply fill-zinc-700 text-zinc-700;
 }
 

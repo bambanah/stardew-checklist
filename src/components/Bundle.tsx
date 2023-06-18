@@ -41,9 +41,7 @@ export default function Bundle(props: Props) {
 			<div
 				class={classNames([
 					"transition-[max-height,opacity]",
-					isBundleComplete(props.bundle.id)
-						? "max-h-0 opacity-0"
-						: "max-h-[2rem]",
+					isBundleComplete(props.bundle.id) ? "opacity-25" : "",
 				])}
 			>
 				<ProgressBar
@@ -51,7 +49,7 @@ export default function Bundle(props: Props) {
 					max={props.bundle.items_required}
 				/>
 			</div>
-			<div class="flex flex-wrap gap-1">
+			<div class="flex flex-wrap justify-center gap-1">
 				<For each={props.bundle.items}>
 					{(item) => <BundleItem item={item} bundleName={props.bundle.id} />}
 				</For>

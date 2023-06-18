@@ -15,7 +15,7 @@ const ProgressBar = (props: Props) => {
 			])}
 		>
 			<div
-				class={classNames(["h-2 bg-[#158efc] transition-all"])}
+				class={classNames(["h-2 bg-[#158efc] transition-[width]"])}
 				style={{
 					width: `${(props.value / props.max) * 100}%`,
 				}}

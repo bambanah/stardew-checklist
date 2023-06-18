@@ -47,7 +47,7 @@ export default function RoomSection(props: Props) {
 					"box-border flex flex-wrap items-start justify-center gap-2 overflow-hidden transition-[max-height,padding,opacity] md:gap-y-4",
 					isCollapsed()
 						? "max-h-0 p-0 opacity-0"
-						: "max-h-[1000rem] pt-4 opacity-100",
+						: "max-h-[500rem] pt-4 opacity-100",
 				])}
 			>
 				<For each={getBundlesInRoom(props.room)}>
