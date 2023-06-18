@@ -1,19 +1,15 @@
 import { persistentStore } from "@/store/utils";
-import { RoomName } from "@/types";
+import { RoomName, Season } from "@/types";
 
 export type Settings = {
 	bundleMode: "normal" | "remixed";
-	hideCompleted: "true" | "false";
-	hideSpoilers: "true" | "false";
-	layoutStyle: "grid" | "card" | "list";
 	collapsedRooms: RoomName[];
+	filterSeason?: Season;
+	filterSeasonExclusive?: boolean;
 };
 
 export const settingsStore = persistentStore<Settings>("settings", {
 	bundleMode: "normal",
-	hideCompleted: "false",
-	hideSpoilers: "false",
-	layoutStyle: "list",
 	collapsedRooms: [],
 });
 

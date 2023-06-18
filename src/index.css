@@ -5,7 +5,7 @@
 body {
 	@apply m-0 p-0;
 	@apply bg-[#108afb] bg-stardew-background bg-cover bg-fixed rendering-pixelated;
-	@apply fill-zinc-700 text-zinc-700;
+	@apply fill-stone-700 text-stone-700;
 }
 
 @layer components {
@@ -69,6 +69,15 @@ body {
 	.border-progress {
 		@apply border-tooltip;
 		border-image-slice: 3 4 3 3 fill;
+	}
+
+	.border-button {
+		border-image: url("/images/button-border.png");
+		border-width: 8px;
+		border-image-slice: 4 fill;
+		border-radius: 10px;
+
+		@apply border-[#dc7b05] bg-[#fdbc6e];
 	}
 
 	@font-face {

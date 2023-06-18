@@ -53,7 +53,7 @@ const ItemBadge = (props: Props) => {
 				{props.quantity && props.quantity > 1 && (
 					<span
 						class={classNames([
-							"absolute -bottom-[6px] left-0 flex h-full w-full items-end justify-end font-mono text-xl font-bold text-zinc-100",
+							"absolute -bottom-[6px] left-0 flex h-full w-full items-end justify-end font-mono text-xl font-bold text-stone-100",
 							shouldFade() && "saturate-50",
 						])}
 						style={{

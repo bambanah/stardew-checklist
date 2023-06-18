@@ -1,6 +1,7 @@
 import { BUNDLES } from "@/constants/bundles";
+import { ITEMS } from "@/constants/items";
 import { ROOMS } from "@/constants/rooms";
-import type { BundleName, ItemName, Room, RoomName } from "@/types";
+import type { BundleItem, BundleName, ItemName, Room, RoomName } from "@/types";
 import { persistentStore } from "./utils";
 
 export type StoredItem = {
@@ -43,6 +44,10 @@ export const isRoomComplete = (roomName: RoomName) => {
 	return [...ROOMS[roomName].bundles].every((bundle) =>
 		isBundleComplete(bundle)
 	);
+};
+
+export const getItemSeasons = (item: BundleItem) => {
+	return [...ITEMS[typeof item === "string" ? item : item.item].seasons];
 };
 
 export const getBundlesInRoom = (room: Room) =>

@@ -1,8 +1,13 @@
-import { bundleStore, isBundleComplete } from "@/store/item-store";
+import {
+	bundleStore,
+	getItemSeasons,
+	isBundleComplete,
+} from "@/store/item-store";
+import { settingsStore } from "@/store/settings-store";
 import type { Bundle, BundleName } from "@/types";
 import classNames from "classnames";
 import { FaSolidCircleCheck } from "solid-icons/fa";
-import { For } from "solid-js";
+import { For, Show } from "solid-js";
 import BundleItem from "./BundleItem";
 import BundleNameContainer from "./atoms/BundleNameContainer";
 import Display from "./atoms/Display";
@@ -13,9 +18,19 @@ interface Props {
 }
 
 export default function Bundle(props: Props) {
+	const [settings] = settingsStore;
 	const [bundleState] = bundleStore;
 
 	const itemsStoredInBundle = () => bundleState[props.bundle.id]?.length ?? 0;
+
+	const filteredItems = () =>
+		props.bundle.items.filter(
+			(item) =>
+				!settings.filterSeason ||
+				(!settings.filterSeasonExclusive &&
+					getItemSeasons(item).length === 0) ||
+				getItemSeasons(item).includes(settings.filterSeason)
+		);
 
 	return (
 		<div
@@ -50,9 +65,18 @@ export default function Bundle(props: Props) {
 				/>
 			</div>
 			<div class="flex flex-wrap justify-center gap-1">
-				<For each={props.bundle.items}>
-					{(item) => <BundleItem item={item} bundleName={props.bundle.id} />}
-				</For>
+				<Show
+					when={filteredItems().length > 0}
+					fallback={
+						<div class="flex h-[89px] items-center justify-center font-display text-stone-500">
+							Nothing in {settings.filterSeason}...
+						</div>
+					}
+				>
+					<For each={filteredItems()}>
+						{(item) => <BundleItem item={item} bundleName={props.bundle.id} />}
+					</For>
+				</Show>
 			</div>
 		</div>
 	);

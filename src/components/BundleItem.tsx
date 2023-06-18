@@ -7,8 +7,8 @@ import {
 } from "@/store/item-store";
 import type { BundleItem, BundleName, Item } from "@/types";
 import classNames from "classnames";
-import ItemTooltip from "./atoms/ItemTooltip";
 import ItemBadge from "./ItemBadge";
+import ItemTooltip from "./atoms/ItemTooltip";
 
 interface Props {
 	bundleName: BundleName;
@@ -70,7 +70,7 @@ export default function BundleItem(props: Props) {
 				class={classNames([
 					"group flex items-center justify-between gap-2 rounded p-2 transition-[color,fill] duration-75 md:p-1",
 					(isBundleComplete(props.bundleName) || isStored()) &&
-						"fill-zinc-500 text-zinc-500",
+						"fill-stone-500 text-stone-500",
 				])}
 				onMouseEnter={showTooltip}
 				onPointerMove={(e) => showTooltip(e)}
