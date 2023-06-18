@@ -37,14 +37,25 @@ export default function BundleItem(props: Props) {
 	const showTooltip = (e: MouseEvent) => {
 		e.preventDefault();
 
-		if (tooltipRef && e.type === "mousemove") {
-			const gap = 15;
+		if (!tooltipRef) return;
 
-			tooltipRef.style.display = "flex";
-			tooltipRef.style.top = e.pageY + gap + "px";
-			tooltipRef.style.left = e.pageX + gap + "px";
-		} else if (tooltipRef && e.type === "mouseleave") {
+		if (e.type === "mouseenter") {
+			tooltipRef.style.display = "block";
+		} else if (e.type === "mouseleave") {
 			tooltipRef.style.display = "none";
+		} else if (e.type === "pointermove") {
+			const gapToCursor = 10;
+			const rightMargin = 280;
+
+			if (e.pageX > document.body.clientWidth - rightMargin) {
+				tooltipRef.style.left = "inherit";
+				tooltipRef.style.right = document.body.clientWidth - e.pageX + "px";
+			} else {
+				tooltipRef.style.left = e.pageX + "px";
+				tooltipRef.style.right = "inherit";
+			}
+
+			tooltipRef.style.top = e.pageY + gapToCursor + "px";
 		}
 	};
 
@@ -61,7 +72,8 @@ export default function BundleItem(props: Props) {
 					(isBundleComplete(props.bundleName) || isStored()) &&
 						"fill-zinc-500 text-zinc-500",
 				])}
-				onMouseMove={(e) => showTooltip(e)}
+				onMouseEnter={showTooltip}
+				onPointerMove={(e) => showTooltip(e)}
 				onMouseLeave={(e) => showTooltip(e)}
 			>
 				<ItemBadge
@@ -73,9 +85,8 @@ export default function BundleItem(props: Props) {
 					itemStored={isStored()}
 					bundleComplete={isBundleComplete(props.bundleName)}
 				/>
-
-				<ItemTooltip ref={tooltipRef} item={itemDetails()} />
 			</button>
+			<ItemTooltip ref={tooltipRef} item={itemDetails()} />
 		</>
 	);
 }
