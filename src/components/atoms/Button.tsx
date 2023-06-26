@@ -9,7 +9,7 @@ const Button = (props: Props) => {
 	return (
 		<button
 			class={classNames([
-				"border-button flex items-center gap-2 px-1 font-stardew text-xl font-bold transition-opacity duration-75",
+				"border-button flex items-center gap-2 px-2 py-1 font-stardew font-bold transition-opacity duration-75 sm:px-1 sm:py-0",
 				props.class,
 			])}
 			{...rest}

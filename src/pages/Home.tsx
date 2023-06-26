@@ -28,8 +28,8 @@ export default function Home() {
 				</Display>
 			</div>
 			<div class="flex flex-col gap-4 md:gap-4">
-				<div class="border-menu bundle-background flex flex-col items-center gap-6 p-4">
-					<div class="flex w-full justify-center gap-4">
+				<div class="border-menu bundle-background flex flex-col items-center gap-3 p-3">
+					<div class="flex w-full flex-wrap justify-center gap-2 md:gap-4">
 						<For each={SEASONS}>
 							{(season) => (
 								<Button
@@ -45,13 +45,15 @@ export default function Home() {
 									])}
 								>
 									<SeasonIcon season={season} />
-									{season.charAt(0).toUpperCase() + season.slice(1)}
+									<span class="hidden sm:inline">
+										{season.charAt(0).toUpperCase() + season.slice(1)}
+									</span>
 								</Button>
 							)}
 						</For>
 						<Button
 							class={classNames([
-								"ml-6",
+								"mx-8",
 								!settings.filterSeasonExclusive && "opacity-60",
 							])}
 							onClick={() =>
@@ -67,7 +69,7 @@ export default function Home() {
 						</Button>
 					</div>
 					<Show when={settings.filterSeason}>
-						<p class="font-display text-xl font-light">
+						<p class="font-display md:text-xl">
 							Displaying items
 							{settings.filterSeasonExclusive && (
 								<span class="text-pink-500"> only</span>
