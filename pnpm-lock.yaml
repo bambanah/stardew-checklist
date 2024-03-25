@@ -7,13 +7,13 @@ settings:
 dependencies:
   '@fontsource/inter':
     specifier: ^5.0.3
-    version: 5.0.3
+    version: 5.0.17
   '@fontsource/patua-one':
     specifier: ^5.0.3
-    version: 5.0.3
+    version: 5.0.18
   '@fontsource/share-tech-mono':
     specifier: ^5.0.3
-    version: 5.0.3
+    version: 5.0.8
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
@@ -848,16 +848,16 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/inter@5.0.3:
-    resolution: {integrity: sha512-JJvh5xht71F6e0E5r2+Ffu8g+CYAxMvnGJm9ZMg5IIjy8UwxLp+8C99TgPJupdEyBpEJv0wuMG2Rd183z/bV8g==}
+  /@fontsource/inter@5.0.17:
+    resolution: {integrity: sha512-2meBGx1kt7u5LwzGc5Sz5rka6ZDrydg6nT3x6Wkt310vHXUchIywrO8pooWMzZdHYcyFY/cv4lEpJZgMD94bCg==}
     dev: false
 
-  /@fontsource/patua-one@5.0.3:
-    resolution: {integrity: sha512-/we274Hx75OJIMx9/h9yycebjgJu0L9XZODLnZtiGEuJrQ+Dsb0279xcjLOHVGde35vLqkzhUbA36/u8lEhVeQ==}
+  /@fontsource/patua-one@5.0.18:
+    resolution: {integrity: sha512-6yuNPMoK1Xzd9zoTgPOmmM/20nl4ImrXNdy+IYRgEgmZaSuU6kW2J6P83geH8K4QhP3qZ4Z2bU71CjKswv9+wA==}
     dev: false
 
-  /@fontsource/share-tech-mono@5.0.3:
-    resolution: {integrity: sha512-kPSDipcNkONdrw3e0fS142dni5SN1ow9TSKGUs3lrdq5NcjJrVPhruofRFW++LisU8qTo/ZRwZRZcZhTADKr3w==}
+  /@fontsource/share-tech-mono@5.0.8:
+    resolution: {integrity: sha512-TswltQj0p+pprBRgSHW6W0JOL7kPGBSuwensgpKjGY1+5HYTXg0xihN1uFPt4HsieeJbw7ldoHimogmjyrIemw==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.10:
