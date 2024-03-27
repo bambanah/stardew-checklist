@@ -19,7 +19,7 @@ dependencies:
     version: 2.5.1
   solid-icons:
     specifier: ^1.0.8
-    version: 1.0.8(solid-js@1.7.6)
+    version: 1.1.0(solid-js@1.7.6)
   solid-js:
     specifier: ^1.7.6
     version: 1.7.6
@@ -3645,9 +3645,8 @@ packages:
       is-fullwidth-code-point: 4.0.0
     dev: true
 
-  /solid-icons@1.0.8(solid-js@1.7.6):
-    resolution: {integrity: sha512-7aQGNjM5ZAGlE25s4APE+2QEQUyltqsTuhfO0OhYZaH2wbY0ZAqL7qRQJPMN98qhoIfroYRNEi/0l7UJN902MA==}
-    engines: {node: '>= 16'}
+  /solid-icons@1.1.0(solid-js@1.7.6):
+    resolution: {integrity: sha512-IesTfr/F1ElVwH2E1110s2RPXH4pujKfSs+koT8rwuTAdleO5s26lNSpqJV7D1+QHooJj18mcOiz2PIKs0ic+A==}
     peerDependencies:
       solid-js: '*'
     dependencies:
