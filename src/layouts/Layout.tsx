@@ -1,16 +1,17 @@
-import { JSXElement } from "solid-js";
+import Navbar from "@/components/navbar";
+import { RouteSectionProps } from "@solidjs/router";
 
-interface Props {
+interface Props extends RouteSectionProps {
 	title?: string;
-	children: JSXElement | JSXElement[];
 }
 
-const Layout = (props: Props) => {
-	return (
-		<>
-			<main class="mx-auto w-full max-w-7xl pb-4 sm:p-4">{props.children}</main>
-		</>
-	);
-};
+const Layout = (props: Props) => (
+	<>
+		<Navbar />
+		<main class="mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center pb-4 sm:p-4">
+			{props.children}
+		</main>
+	</>
+);
 
 export default Layout;

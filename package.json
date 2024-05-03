@@ -4,11 +4,12 @@
 	"license": "GPL-3.0-only",
 	"homepage": "https://github.com/bambanah/stardew-checklist#readme",
 	"private": true,
+	"type": "module",
 	"scripts": {
+		"prepare": "husky",
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prepare": "husky install",
 		"lint": "eslint . --fix --ignore-path .gitignore",
 		"fetch-missing": "ts-node scripts/fetch-missing-images.ts"
 	},
@@ -16,6 +17,7 @@
 		"@fontsource/inter": "^5.0.3",
 		"@fontsource/patua-one": "^5.0.3",
 		"@fontsource/share-tech-mono": "^5.0.3",
+		"@solidjs/router": "^0.13.3",
 		"classnames": "^2.3.2",
 		"solid-icons": "^1.0.8",
 		"solid-js": "^1.7.6"

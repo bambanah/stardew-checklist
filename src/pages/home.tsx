@@ -1,10 +1,8 @@
 import RoomSection from "@/components/RoomSection";
 import Button from "@/components/atoms/Button";
-import Display from "@/components/atoms/Display";
 import SeasonIcon from "@/components/atoms/SeasonIcon";
 import { ROOMS } from "@/constants/rooms";
 import { SEASONS } from "@/constants/seasons";
-import Layout from "@/layouts/Layout";
 import { settingsStore } from "@/store/settings-store";
 import { RoomName, Season } from "@/types";
 import classNames from "classnames";
@@ -18,16 +16,8 @@ export default function Home() {
 	};
 
 	return (
-		<Layout>
-			<div class="mx-auto py-8 text-center">
-				<Display
-					size="xl"
-					class="text-stone-100 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.8)]"
-				>
-					Bundle Checklist
-				</Display>
-			</div>
-			<div class="flex flex-col gap-4 md:gap-4">
+		<>
+			<div class="flex flex-col gap-4 pt-8 md:gap-4">
 				<div class="border-menu bundle-background flex flex-col items-center gap-3 p-3">
 					<div class="flex w-full flex-wrap justify-center gap-2 md:gap-4">
 						<For each={SEASONS}>
@@ -84,6 +74,6 @@ export default function Home() {
 					)}
 				</For>
 			</div>
-		</Layout>
+		</>
 	);
 }
